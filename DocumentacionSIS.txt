@@ -1,0 +1,235 @@
+﻿Comenzaremos añadiendo 3 discos de 5GB para nuestro Raid 5
+  
+  
+  
+  
+  
+
+Revisamos que se han creado correctamente los discos  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cambiaremos el tipo de los discos introducidos a “linux raid autodetect”
+Este proceso lo haremos 3 veces  
+Revisamos que los discos se han particionado correctamente  
+Comenzaremos creando el RAID 5
+  
+
+Comprobamos que se ha creado correctamente    
+Copiamos el contenido de la salida del comando “mdadm –detail –scan” a la ruta /etc/mdadm/mdadm.conf
+  
+
+Formateamos la RAID
+  
+
+Montamos la RAID
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Añadimos la siguiente línea al archivo fstab para hacer que la RAID sea permanente
+  
+
+Actualizamos toda la información de la raid y hacemos reboot
+  
+
+
+
+Creamos el grupo donde meteremos los usuarios
+  
+
+Creamos y añadimos los usuarios a nuestro grupo
+  
+
+
+
+NETWORK
+Cambiamos nuestro adaptador a Bridged
+  
+
+Revisamos el adaptador
+  
+
+Configuramos nuestra ip
+  
+  
+
+Reiniciamos el servicio
+  
+
+
+
+Comprobamos si podemos salir a internet
+  
+
+
+
+SAMBA
+
+
+Instalamos Samba
+  
+  
+
+Revisamos si el samba esta instalado, en caso, de no estar instalado lo instalaremos
+  
+
+Cambiaremos el nombre del workgroup
+  
+
+Después de haber instalado Samba comenzaremos creando nuestro repositorio y le damos los permisos
+  
+
+Creamos 2 grupos uno de solo lectura y otro de lectura y escritura  
+Los permisos del directorio quedarán como sigue:  
+Reiniciamos el servicio samba y revisamos el estado  Ahora añadimos al usuario al grupo ProtectedR  
+A continuación instalamos la herramienta smbclient  
+Revisamos los permisos que tiene el usuario  
+Vamos a meter al usuario en el grupo protectedRW y comprobar que tiene los permisos de lectura y escritura
+  
+  
+
+Ahora definimos la compartición editando el archivo de configuración    
+SSH
+Instalamos el servicio SSH
+  
+
+Comprobamos que la instalación se ha completado correctamente
+  
+
+Entramos al archivo de configuración sshd_config
+  
+
+Permitir que el root se pueda logear
+  
+
+Autenticación de contraseña  
+  
+
+
+
+GITHUB
+Instalamos Github
+  
+
+Ahora tienes que entrar a este enlace y descargar la versión que quieras instalar.
+  
+
+Descomprimimos el archivo comprimido descargado
+  
+
+Ahora instalamos git localmente
+  
+
+
+
+
+
+Creamos un repositorio            
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SERVER
+  
+  
+  
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+Para Subir los Archivos Hacemos   
+Para Bajar los Archivos del GitHub
+  
+
+
+
+
+
+
+
+
+
+A la hora de hacer un git pull desde el git Bash en nuestro equipo local saldrá la siguiente página
+  
+
+Para salir de ella pondremos :qa!
+
+
+
+
+https://blog.nillsf.com/index.php/2021/05/27/github-sso-using-password-protected-ssh-keys/
