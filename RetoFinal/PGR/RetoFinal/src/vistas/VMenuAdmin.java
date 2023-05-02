@@ -93,6 +93,7 @@ public class VMenuAdmin extends JDialog implements ActionListener {
 		gestionarApuesta.setBorder(null);
 		gestionarApuesta.setBackground(Color.DARK_GRAY);
 		gestionarApuesta.setBounds(37, 218, 410, 35);
+		gestionarApuesta.addActionListener(this);
 		contentPanel.add(gestionarApuesta);
 
 		insertarBDA = new JButton("INSERTAR NUEVOS JUGADORES,EQUIPOS...");
@@ -102,6 +103,7 @@ public class VMenuAdmin extends JDialog implements ActionListener {
 		insertarBDA.setBorder(null);
 		insertarBDA.setBackground(Color.DARK_GRAY);
 		insertarBDA.setBounds(37, 278, 410, 35);
+		insertarBDA.addActionListener(this);
 		contentPanel.add(insertarBDA);
 
 		darBaja = new JButton("DAR DE BAJA (JUGADORES,EQUIPOS...)");
@@ -111,6 +113,7 @@ public class VMenuAdmin extends JDialog implements ActionListener {
 		darBaja.setBorder(null);
 		darBaja.setBackground(Color.DARK_GRAY);
 		darBaja.setBounds(37, 337, 410, 35);
+		darBaja.addActionListener(this);
 		contentPanel.add(darBaja);
 
 		modificar = new JButton("MODIFICAR INFORMACION(JUGADORES...)");
@@ -120,6 +123,7 @@ public class VMenuAdmin extends JDialog implements ActionListener {
 		modificar.setBorder(null);
 		modificar.setBackground(Color.DARK_GRAY);
 		modificar.setBounds(37, 396, 410, 35);
+		modificar.addActionListener(this);
 		contentPanel.add(modificar);
 
 		JLabel lblNewLabel_1 = new JLabel("");
@@ -139,17 +143,45 @@ public class VMenuAdmin extends JDialog implements ActionListener {
 			crearApuestas();
 		}
 		if (e.getSource().equals(gestionarApuesta)) {
-
+			gestionarApuestas();
 		}
 		if (e.getSource().equals(insertarBDA)) {
-
+			insertarBDA();
 		}
 		if (e.getSource().equals(darBaja)) {
-
+			darBaja();
 		}
 		if (e.getSource().equals(modificar)) {
-
+			modificar();
 		}
+	}
+
+	private void modificar() {
+		// TODO Auto-generated method stub
+		VModificar vent = new VModificar(vElegir, true, dao);
+		this.dispose();
+		vent.setVisible(true);
+	}
+
+	private void darBaja() {
+		// TODO Auto-generated method stub
+		VDarBaja vent = new VDarBaja(vElegir, true, dao);
+		this.dispose();
+		vent.setVisible(true);
+	}
+
+	private void insertarBDA() {
+		// TODO Auto-generated method stub
+		VInsertarBDA vent = new VInsertarBDA(vElegir, true, dao);
+		this.dispose();
+		vent.setVisible(true);
+	}
+
+	private void gestionarApuestas() {
+		// TODO Auto-generated method stub
+		VGestionarApuestas vent = new VGestionarApuestas(vElegir, true, dao);
+		this.dispose();
+		vent.setVisible(true);
 	}
 
 	private void crearApuestas() {

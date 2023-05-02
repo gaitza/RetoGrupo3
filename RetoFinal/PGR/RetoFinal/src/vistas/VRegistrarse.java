@@ -388,7 +388,7 @@ public class VRegistrarse extends JDialog implements ActionListener {
 			Pattern pattern = Pattern.compile("^([0-9a-zA-Z]+[-._+&])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}$");
 			Matcher matcher = pattern.matcher(email.getText());
 
-			if (email != null) {
+			if (email.getText().equalsIgnoreCase(dao.buscarEmail(email.getText()))) {
 				error += "El EMAIL INTRODUCIDO YA EXISTE.\n";
 				email.setBackground(new Color(255, 0, 0));
 				return error;

@@ -1,11 +1,15 @@
 package modelo;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
 
 import clases.Cuenta;
 import clases.Usuario;
@@ -31,10 +35,24 @@ public class DaoImplementacion implements Dao {
 	// Metodo conexion con bda
 	public void abrirConexion() {
 		try {
-			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/apuestas?serverTimezone=Europe/Madrid&useSSL=false", "root",
-					"abcd*1234");
+			Properties conexionBDA = new Properties();
+			String rutaProyecto = System.getProperty("user.dir");
+			FileInputStream fis = new FileInputStream(rutaProyecto + "\\src\\modelo\\ConexionBDA.properties");
+			conexionBDA.load(fis);
+			
+			final String URL = conexionBDA.getProperty("url");
+			final String USER = conexionBDA.getProperty("user");
+			final String PASSWORD = conexionBDA.getProperty("password");
+			
+			con=DriverManager.getConnection(URL, USER, PASSWORD);
+			
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

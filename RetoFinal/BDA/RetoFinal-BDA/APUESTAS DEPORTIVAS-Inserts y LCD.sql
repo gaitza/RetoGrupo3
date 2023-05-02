@@ -290,6 +290,24 @@ insert into jugador (id_jugador, nombre, apellido1, apellido2, fecha_nac, dorsal
 insert into jugador (id_jugador, nombre, apellido1, apellido2, fecha_nac, dorsal, cod_equipo) values ("00088","Kike", "García", "Martínez", "1989-11-25", 18, "012");
 
 
+#insert de partidos
+insert into partido (Cod_Partido, Fecha_Partido, Resultado) values ("001","2023-05-13",null);
+insert into partido (Cod_Partido, Fecha_Partido, Resultado) values ("002","2023-05-14",null);
+insert into partido (Cod_Partido, Fecha_Partido, Resultado) values ("003","2023-06-23",null);
+
+insert into jugar (Cod_Partido, Cod_Equipo) values ("001","001");
+insert into jugar (Cod_Partido, Cod_Equipo) values ("001","005");
+insert into jugar (Cod_Partido, Cod_Equipo) values ("002","027");
+insert into jugar (Cod_Partido, Cod_Equipo) values ("002","029");
+insert into jugar (Cod_Partido, Cod_Equipo) values ("003","033");
+insert into jugar (Cod_Partido, Cod_Equipo) values ("003","021");
+
+
+#insert de apuestas
+insert into apuesta (Cod_Apuesta, Fecha_Apuesta, Cuota) values("001","2023-05-02",4);
+insert into apuesta (Cod_Apuesta, Fecha_Apuesta, Cuota) values("002","2023-04-29",1.25);
+insert into apuesta (Cod_Apuesta, Fecha_Apuesta, Cuota) values("003","2023-05-07",2.3);
+insert into apuesta (Cod_Apuesta, Fecha_Apuesta, Cuota) values("004","2023-02-27",1.34);
 
 #Privilegios y Roles
 drop user if exists Grupo3;

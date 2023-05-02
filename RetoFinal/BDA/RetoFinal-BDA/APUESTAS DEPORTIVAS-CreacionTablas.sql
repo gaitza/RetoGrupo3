@@ -30,7 +30,7 @@ create table Usuario (
 create table Apuesta (
 	Cod_Apuesta char(3) primary key,
     Fecha_Apuesta date not null,
-    Cuota int not null,
+    Cuota float not null,
     constraint check_Cuota check (Cuota>1));
     
 #creacion de tabla gestionar
