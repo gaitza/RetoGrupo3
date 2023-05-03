@@ -5,7 +5,11 @@ use Apuestas;
 #creacion de tabla Cuenta
 create table Cuenta (
 	Cod_Cuenta char(3) primary key,
+<<<<<<< HEAD
     Nombre_Cuenta varchar(50) unique not null,
+=======
+    Nombre_Cuenta varchar(25) unique not null,
+>>>>>>> 55928fbc873144f20d6ce52a5dd1681eb17fba34
     email varchar(50) unique not null,
     Contraseña varchar(25) not null);
     
@@ -18,11 +22,19 @@ create table Administrador (
 #creacion de tabla user
 create table Usuario (
 	Cod_Cuenta char(3),
+<<<<<<< HEAD
     NºTarjeta int(16) unique not null,
     Fecha_Caducidad date not null,
     CVV char(3) not null,
     Pin char(4) not null,
     Saldo int not null,
+=======
+    NºTarjeta char(16) unique not null,
+    Fecha_Caducidad date not null,
+    CVV char(3) not null,
+    Pin char(4) not null,
+    Saldo float not null,
+>>>>>>> 55928fbc873144f20d6ce52a5dd1681eb17fba34
     constraint pk_usuario primary key (Cod_Cuenta),
 	constraint fk_usuario foreign key (Cod_Cuenta) references Cuenta(Cod_Cuenta));
 
@@ -30,7 +42,11 @@ create table Usuario (
 create table Apuesta (
 	Cod_Apuesta char(3) primary key,
     Fecha_Apuesta date not null,
+<<<<<<< HEAD
     Cuota int not null,
+=======
+    Cuota float not null,
+>>>>>>> 55928fbc873144f20d6ce52a5dd1681eb17fba34
     constraint check_Cuota check (Cuota>1));
     
 #creacion de tabla gestionar
