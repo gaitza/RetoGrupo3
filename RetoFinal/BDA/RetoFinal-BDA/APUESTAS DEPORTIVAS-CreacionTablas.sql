@@ -77,10 +77,12 @@ create table Equipo (
 #creacion de tabla jugar
 create table Jugar (
 	Cod_Partido char(3),
-    Cod_Equipo char(3),
-    constraint pk_jugar primary key (Cod_Partido, Cod_Equipo),
+    Cod_Equipo_Local char(3),
+    Cod_Equipo_Visitante char(3),
+    constraint pk_jugar primary key (Cod_Partido, Cod_Equipo_Local, Cod_Equipo_Visitante),
 	constraint fk_jugar foreign key (Cod_Partido) references Partido(Cod_Partido),
-	constraint fk_jugar2 foreign key (Cod_equipo) references Equipo(Cod_Equipo));
+	constraint fk_jugar2 foreign key (Cod_equipo_local) references Equipo(Cod_Equipo),
+    constraint fk_jugar3 foreign key (Cod_equipo_visitante) references Equipo(Cod_Equipo));
     
 #creacion de tabla jugador
 create table Jugador (

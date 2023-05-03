@@ -23,9 +23,13 @@ import javax.swing.border.LineBorder;
 import javax.swing.JScrollPane;
 
 public class VGestionarApuestas extends JDialog implements ActionListener{
+	
+	private final JPanel contentPanel = new JPanel();
 	private Dao dao;
 	private VElegir vElegir;
 	private JTable table;
+	private JButton btnVolver;
+	private JButton btnContinuar;
 
 	public VGestionarApuestas(VElegir vElegir, boolean b, Dao dao) {
 		super(vElegir);
@@ -59,14 +63,25 @@ public class VGestionarApuestas extends JDialog implements ActionListener{
 		panel_1.setBounds(0, 498, 479, 58);
 		getContentPane().add(panel_1);
 		
-		JButton btnVolver = new JButton("Volver");
+		btnVolver = new JButton("Volver");
 		btnVolver.setForeground(new Color(173, 255, 47));
 		btnVolver.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnVolver.setFocusable(false);
 		btnVolver.setBorder(null);
 		btnVolver.setBackground(Color.DARK_GRAY);
-		btnVolver.setBounds(183, 11, 107, 36);
+		btnVolver.setBounds(50, 11, 107, 36);
+		btnVolver.addActionListener(this);
 		panel_1.add(btnVolver);
+		
+		btnContinuar = new JButton("Continuar");
+		btnContinuar.setForeground(new Color(173, 255, 47));
+		btnContinuar.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnContinuar.setFocusable(false);
+		btnContinuar.setBorder(null);
+		btnContinuar.setBackground(Color.DARK_GRAY);
+		btnContinuar.setBounds(334, 11, 107, 36);
+		btnContinuar.addActionListener(this);
+		panel_1.add(btnContinuar);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 109, 459, 372);
@@ -83,6 +98,25 @@ public class VGestionarApuestas extends JDialog implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+				if(e.getSource().equals(btnVolver)) {
+					volver();
+				}
+				if(e.getSource().equals(btnContinuar)) {
+					eleccion();
+				}
 		
+	}
+	
+	private void eleccion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void volver() {
+		// TODO Auto-generated method stub
+		this.setFocusableWindowState(false);
+		this.dispose();
+		VMenuAdmin vent = new VMenuAdmin(vElegir, true, dao);
+		vent.setVisible(true);
 	}
 }
