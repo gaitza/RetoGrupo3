@@ -12,6 +12,8 @@ create table Cuenta (
 #creacion de tabla Admin
 create table Administrador (
 	Cod_Cuenta char(3),
+    Salario int not null,
+    Fecha_Contratacion date not null,
 	constraint pk_administrador primary key (Cod_Cuenta),
 	constraint fk_administrador foreign key (Cod_Cuenta) references Cuenta(Cod_Cuenta));
     
@@ -72,7 +74,8 @@ create table Equipo (
     Fecha_Fun int not null,
     Localidad varchar(50) not null,
     Pais varchar(30) not null,
-    Estadio varchar(100) not null);
+    Estadio varchar(100) not null,
+    constraint pk_equipo primary key (Cod_Equipo));
     
 #creacion de tabla jugar
 create table Jugar (
@@ -81,8 +84,8 @@ create table Jugar (
     Cod_Equipo_Visitante char(3),
     constraint pk_jugar primary key (Cod_Partido, Cod_Equipo_Local, Cod_Equipo_Visitante),
 	constraint fk_jugar foreign key (Cod_Partido) references Partido(Cod_Partido),
-	constraint fk_jugar2 foreign key (Cod_equipo_local) references Equipo(Cod_Equipo),
-    constraint fk_jugar3 foreign key (Cod_equipo_visitante) references Equipo(Cod_Equipo));
+	constraint fk_jugar2 foreign key (Cod_equipo_Local) references Equipo(Cod_Equipo),
+	constraint fk_jugar3 foreign key (Cod_equipo_Visitante) references Equipo(Cod_Equipo));
     
 #creacion de tabla jugador
 create table Jugador (
@@ -93,7 +96,8 @@ create table Jugador (
     Fecha_Nac date not null,
     Dorsal int not null,
     Cod_Equipo char(3),
-    constraint fk_jugador foreign key (Cod_Equipo) references Equipo(Cod_Equipo));
+    constraint fk_jugador foreign key (Cod_Equipo) references Equipo(Cod_Equipo)
+    on delete cascade);
     
 #creacion de tabla golea
 create table Golea (

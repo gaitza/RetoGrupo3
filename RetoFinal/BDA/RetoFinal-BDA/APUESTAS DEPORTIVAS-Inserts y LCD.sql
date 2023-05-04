@@ -1,21 +1,17 @@
 use apuestas;
 
 #Inserts de las Cuentas
-insert into cuenta (cod_cuenta, nombre_cuenta, email, contraseña) values ("001", "Adrian", "adrianmosan@gmail.com", "abcd*1234");
-insert into cuenta (cod_cuenta, nombre_cuenta, email, contraseña) values ("002", "Gaizka", "gaizkagorrotxategi87@gmail.com", "abcd*1234");
-insert into cuenta (cod_cuenta, nombre_cuenta, email, contraseña) values ("003", "Paula", "paulajimenezbenito@gmail.com", "abcd*1234");
-insert into cuenta (cod_cuenta, nombre_cuenta, email, contraseña) values ("004", "Jason", "jasontartanga@gmail.com", "abcd*1234");
+insert into cuenta (cod_cuenta, nombre_cuenta, email, contraseña) values ("001", "Admin", "administrador@gmail.com", "abcd*1234");
+insert into cuenta (cod_cuenta, nombre_cuenta, email, contraseña) values ("002", "Jason", "jasontartanga@gmail.com", "abcd*1234");
 
 
 
 #Inserts de los administradores
-insert into administrador (cod_cuenta) values ("001");
-insert into administrador (cod_cuenta) values ("002");
-insert into administrador (cod_cuenta) values ("003");
+insert into administrador (cod_cuenta, salario, Fecha_Contratacion) values ("001","2500","2023-04-10");
 
 
 #Inserts de los usuarios
-insert into usuario (cod_cuenta, nºtarjeta, fecha_caducidad, cvv, pin, saldo) values ("004","1234567890123456","2026-05-01", "034", "4238", 160);
+insert into usuario (cod_cuenta, nºtarjeta, fecha_caducidad, cvv, pin, saldo) values ("002","1234567890123456","2026-05-01", "034", "4238", 160);
 
 
 #Inserts de deportes
@@ -64,7 +60,7 @@ insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) val
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("024", "Empoli F.C.", 1920,	"Empoli", "Italia", "Estadio Carlo Castellani");
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("025", "Fiorentina", 1926,	"Florencia", "Italia", "Artemio Franchi");
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("026", "Hellas Verona F.C.", 1903,	"Verona", "Italia", "Marcantonio Bentegodi");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("027", "Internazionale", 1908,	"Milan", "Italia", "Giuseppe Meazza");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("027", "Inter de Milan", 1908,	"Milan", "Italia", "Giuseppe Meazza");
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("028", "Juventus", 1897,	"Turin", "Italia", "Allianz Stadium");
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("029", "Lazio", 1900, "Roma", "Italia", "Olímpico de Roma");
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("030", "U.S. Lecce", 1908, "Lecce", "Italia", "Stadio Via del Mare");
@@ -295,19 +291,19 @@ insert into partido (Cod_Partido, Fecha_Partido, Resultado) values ("001","2023-
 insert into partido (Cod_Partido, Fecha_Partido, Resultado) values ("002","2023-05-14",null);
 insert into partido (Cod_Partido, Fecha_Partido, Resultado) values ("003","2023-06-23",null);
 
-insert into jugar (Cod_Partido, Cod_Equipo) values ("001","001");
-insert into jugar (Cod_Partido, Cod_Equipo) values ("001","005");
-insert into jugar (Cod_Partido, Cod_Equipo) values ("002","027");
-insert into jugar (Cod_Partido, Cod_Equipo) values ("002","029");
-insert into jugar (Cod_Partido, Cod_Equipo) values ("003","033");
-insert into jugar (Cod_Partido, Cod_Equipo) values ("003","021");
+insert into jugar (Cod_Partido, Cod_Equipo_Local, Cod_Equipo_Visitante) values ("001","001","005");
+insert into jugar (Cod_Partido, Cod_Equipo_Local, Cod_Equipo_Visitante) values ("002","027","029");
+insert into jugar (Cod_Partido, Cod_Equipo_Local, Cod_Equipo_Visitante) values ("003","033","021");
 
 
 #insert de apuestas
 insert into apuesta (Cod_Apuesta, Fecha_Apuesta, Cuota) values("001","2023-05-02",4);
 insert into apuesta (Cod_Apuesta, Fecha_Apuesta, Cuota) values("002","2023-04-29",1.25);
 insert into apuesta (Cod_Apuesta, Fecha_Apuesta, Cuota) values("003","2023-05-07",2.3);
-insert into apuesta (Cod_Apuesta, Fecha_Apuesta, Cuota) values("004","2023-02-27",1.34);
+
+insert into sobre (Cod_Apuesta, Cod_Partido) values ("001","002");
+insert into sobre (Cod_Apuesta, Cod_Partido) values ("002","003");
+insert into sobre (Cod_Apuesta, Cod_Partido) values ("003","001");
 
 #Privilegios y Roles
 drop user if exists Grupo3;

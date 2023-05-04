@@ -80,7 +80,7 @@ public class VGestionarApuestas extends JDialog implements ActionListener{
 		btnContinuar.setBorder(null);
 		btnContinuar.setBackground(Color.DARK_GRAY);
 		btnContinuar.setBounds(334, 11, 107, 36);
-		btnContinuar.addActionListener(this);
+		btnContinuar.addActionListener(this); 
 		panel_1.add(btnContinuar);
 		
 		JScrollPane scrollPane = new JScrollPane();
