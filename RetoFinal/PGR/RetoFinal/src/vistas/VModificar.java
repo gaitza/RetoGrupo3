@@ -55,7 +55,7 @@ public class VModificar extends JDialog implements ActionListener {
 		contentPanel.add(panel);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(ruta + "\\src\\fotos\\Cabecera.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(ruta+"\\src\\fotos\\Cabecera.jpg"));
 		lblNewLabel.setBounds(156, 0, 220, 88);
 		panel.add(lblNewLabel);
 		
@@ -79,6 +79,8 @@ public class VModificar extends JDialog implements ActionListener {
 		comboBox.setForeground(new Color(173, 255, 47));
 		comboBox.setBackground(Color.DARK_GRAY);
 		comboBox.setBounds(92, 273, 298, 35);
+		comboBox.setFocusable(false);
+		comboBox.setBorder(null);
 		comboBox.addActionListener(this);
 		comboBox.addItem("Equipo");
 		comboBox.addItem("Jugador");

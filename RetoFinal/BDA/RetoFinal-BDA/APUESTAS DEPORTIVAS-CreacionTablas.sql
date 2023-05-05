@@ -64,6 +64,7 @@ create table Realizar (
 	Cod_Cuenta char(3),
     Cod_Apuesta char(3),
     Dinero_Apost int not null,
+    Opcion_Apost char(1) not null,
     constraint check_Dinero_Apost check (Dinero_Apost>0),
     constraint pk_realizar primary key (Cod_Cuenta, Cod_Apuesta),
 	constraint fk_realizar foreign key (Cod_Cuenta) references Usuario(Cod_Cuenta),
@@ -91,7 +92,11 @@ create table Equipo (
     Localidad varchar(50) not null,
     Pais varchar(30) not null,
     Estadio varchar(100) not null,
+<<<<<<< HEAD
     constraint pk_equipo primary key (Cod_Equipo));
+=======
+    Deporte varchar(30)not null);
+>>>>>>> 0b7b409ffd49cdd87e76c4d7d0940c72d25e39c5
     
 #creacion de tabla jugar
 create table Jugar (

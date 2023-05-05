@@ -61,6 +61,7 @@ insert into competicion (cod_comp, nombre, deporte) values ("005", "Liga Asobal 
 
 #Inserts de Equipos
 <<<<<<< HEAD
+<<<<<<< HEAD
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values (001, 'Athletic Club', 1898, 'Bilbao', 'España', 'San Mamés');
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values (002, 'Atlético de Madrid', 1903,	'Madrid', 'España', 'Civitas Metropolitano');
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values (003, 'UD Almeria', 1989, 'Almeria', 'España', 'Power Horse Stadium');
@@ -178,24 +179,68 @@ insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) val
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("038", "Spezia Calcio", 1906, "Via Nicolo Fieschi", "Italia", "Estadio Alberto Picco");
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("039", "Torino F.C.", 1906, "Turin", "Italia", "Olimpico de Turin");
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("040", "Udinese", 1896, "Udine", "Italia", "Stadio Friuli");
+=======
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("001", "Athletic Club", 1898, "Bilbao", "España", "San Mamés", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("002", "Atlético de Madrid", 1903,	"Madrid", "España", "Civitas Metropolitano", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("003", "UD Almeria", 1989, "Almeria", "España", "Power Horse Stadium", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("004", "FC Barcelona", 1899, "Barcelona", "España", "Spotify Camp Nou", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("005", "Cádiz CF", 1910, "Cádiz", "España", "Estadio Nuevo Mirandilla", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("006", "RC Celta de Vigo", 1923, "Vigo", "España", "Abanca-Balaídos", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("007", "Elche CF", 1922, "Elche", "España", "Martinez Valero", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("008", "RCD Espanyol", 1900, "Barcelona", "España", "RCDE Stadium", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("009", "Getafe CF", 1983, "Getafe", "España", "Coliseum Alfonso Pérez", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("010", "Girona FC", 1930, "Girona", "España", "Montilivi", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("011", "RCD Mallorca", 1916, "Mallorca", "España", "Son Moix", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("012", "CA Osasuna", 1919, "Pamplona", "España", "El Sadar", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("013", "Rayo Vallecano", 1924, "Vallecas", "España", "Estadio de Vallecas", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("014", "Real Betis Balonpié", 1907, "Sevilla", "España", "Benito Villamarín", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("015", "Real Madrid CF", 1902, "Madrid", "España", "Santiago Bernabéu", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("016", "Real Sociedad", 1909, "San Sebastián", "España", "Reale Arena", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("017", "Real Valladolid CF", 1928, "Valladolid", "España", "José Zorrilla", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("018", "Sevilla FC", 1890, "Sevilla", "España", "Ramón Sánchez-Pizjuán", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("019", "Valencia CF", 1919, "Valencia", "España", "Mestalla", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("020", "Villarreal CF", 1942, "Villarreal", "España", "Estadio de la Cerámica", "Futbol");
 
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("041", "Barça", 1978, "Barcelona", "España", "Palau Blaugrana");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("042", "Cordoba Patrimonio de la Humanidad", 2013, "Cordoba", "España", "Palacio Municipal de Deportes Vista Alegre");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("043", "ElPozo Murcia Costa Calida", 1989, "Murcia", "España", "Palacio de Deportes de Murcia");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("044", "Industrias Santa Coloma", 1975, "Santa Coloma de Gramenet", "España", "Pabellon Nuevo");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("045", "Inter FS", 1977, "Torrejon de Ardoz", "España", "Jorge Garbajosa");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("046", "Jaen FS", 1980, "Jaen", "España", "Olivo Arena");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("047", "Jimbee Cartagena", 2013, "Cartagena", "España", "Palacio de los Deportes de Cartagena");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("048", "Levante UD FS", 2005, "Valencia", "España", "Pabellon Municipal de Paterna");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("049", "Quesos Hidalgo Manzanares FS", 2001, "Manzanares", "España", "Pabellon Municipal Antonio Caba");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("050", "Xota FS", 1978, "Pamplona", "España", "Anaitasuna");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("051", "Mallorca Palma Futsal", 1998, "Palma(Baleares)", "España", "Palau Municipal d´Esports de Son Moix");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("052", "Viña Albali Valdepeñas", 2002, "Valdepeñas", "España", "Virgen de la Cabeza");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("053", "Ribera Navarra FS", 2001, "Tudela", "España", "Ciudad de Tudela");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("054", "Real Betis Futsal", 1987, "Sevilla", "España", "Pabellon de San Pablo");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("055", "BeSoccer CD UMA Antequera", 1985, "Antequera", "España", "Fernando Argüelles");
-insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("056", "Noia Portus Apostoli", 2008, "Noia(A Coruña)", "España", "Pabellon Municipal Agustin Mouris");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("021", "Atalanta", 1907,	"Bergamo", "Italia", "Gewiss Stadium", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("022", "Bologna", 1909,	"Bolonia", "Italia", "Renato Dall´Ara", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("023", "U.S. Cremonese", 1903, "Cremona", "Italia", "Stadio Giovanni Zini", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("024", "Empoli F.C.", 1920,	"Empoli", "Italia", "Estadio Carlo Castellani", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("025", "Fiorentina", 1926,	"Florencia", "Italia", "Artemio Franchi", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("026", "Hellas Verona F.C.", 1903,	"Verona", "Italia", "Marcantonio Bentegodi", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("027", "Inter de Milan", 1908,	"Milan", "Italia", "Giuseppe Meazza", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("028", "Juventus", 1897,	"Turin", "Italia", "Allianz Stadium", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("029", "Lazio", 1900, "Roma", "Italia", "Olímpico de Roma", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("030", "U.S. Lecce", 1908, "Lecce", "Italia", "Stadio Via del Mare", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("031", "A.C. Milan", 1899, "Milan", "Italia", "Calcistico San Siro", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("032", "A.C. Monza", 1912, "Monza", "Italia", "Estadio Brianteo", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("033", "S.S.C Napoli", 1926, "Napoles", "Italia", "Diego Armando Maradona", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("034", "A.S. Roma", 1927, "Roma", "Italia", "Olimpico de Roma", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("035", "U.S. Salernitana", 1919, "Salermo", "Italia", "Arechi", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("036", "U.C. Sampdoria", 1946, "Genova", "Italia", "Stadio Luigi Ferraris", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("037", "Sassuolo Calcio", 1920, "Reggio Emilia", "Italia", "MAPEI Stadium - Citta del Tricolore", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("038", "Spezia Calcio", 1906, "Via Nicolo Fieschi", "Italia", "Estadio Alberto Picco", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("039", "Torino F.C.", 1906, "Turin", "Italia", "Olimpico de Turin", "Futbol");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("040", "Udinese", 1896, "Udine", "Italia", "Stadio Friuli", "Futbol");
+>>>>>>> 0b7b409ffd49cdd87e76c4d7d0940c72d25e39c5
 
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("041", "Barça", 1978, "Barcelona", "España", "Palau Blaugrana", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("042", "Cordoba Patrimonio de la Humanidad", 2013, "Cordoba", "España", "Palacio Municipal de Deportes Vista Alegre", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("043", "ElPozo Murcia Costa Calida", 1989, "Murcia", "España", "Palacio de Deportes de Murcia", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("044", "Industrias Santa Coloma", 1975, "Santa Coloma de Gramenet", "España", "Pabellon Nuevo", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("045", "Inter FS", 1977, "Torrejon de Ardoz", "España", "Jorge Garbajosa", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("046", "Jaen FS", 1980, "Jaen", "España", "Olivo Arena", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("047", "Jimbee Cartagena", 2013, "Cartagena", "España", "Palacio de los Deportes de Cartagena", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("048", "Levante UD FS", 2005, "Valencia", "España", "Pabellon Municipal de Paterna", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("049", "Quesos Hidalgo Manzanares FS", 2001, "Manzanares", "España", "Pabellon Municipal Antonio Caba", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("050", "Xota FS", 1978, "Pamplona", "España", "Anaitasuna", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("051", "Mallorca Palma Futsal", 1998, "Palma(Baleares)", "España", "Palau Municipal d´Esports de Son Moix", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("052", "Viña Albali Valdepeñas", 2002, "Valdepeñas", "España", "Virgen de la Cabeza", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("053", "Ribera Navarra FS", 2001, "Tudela", "España", "Ciudad de Tudela", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("054", "Real Betis Futsal", 1987, "Sevilla", "España", "Pabellon de San Pablo", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("055", "BeSoccer CD UMA Antequera", 1985, "Antequera", "España", "Fernando Argüelles", "Futbol Sala");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("056", "Noia Portus Apostoli", 2008, "Noia(A Coruña)", "España", "Pabellon Municipal Agustin Mouris", "Futbol Sala");
+
+<<<<<<< HEAD
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("057", "Barca", 1943, "Barcelona", "España", "Palau Blaugrana");
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("058", "Rebi Balonmano Cuenca", 1989, "Cuenca", "España", "Pabellón Municipal El Sargal");
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("059", "BM Granollers", 1944, "Granollers", "España", "Palacio de Deportes de Granollers");
@@ -213,6 +258,24 @@ insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) val
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("071", "Balonmano Guadalajara", 2007, "Guadalajara", "España", "Polideportivo Municipal David Santamaría");
 insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio) values ("072", "Club Cisne BM", 1964, "Pontevedra", "España", "Estadio da Xuventude");
 >>>>>>> 55928fbc873144f20d6ce52a5dd1681eb17fba34
+=======
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("057", "Barca", 1943, "Barcelona", "España", "Palau Blaugrana", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("058", "Rebi Balonmano Cuenca", 1989, "Cuenca", "España", "Pabellón Municipal El Sargal", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("059", "BM Granollers", 1944, "Granollers", "España", "Palacio de Deportes de Granollers", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("060", "Bidasoa Irun", 1962, "Irún", "Epaña", "Polideportivo Artaleku", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("061", "BM Logroño La Rioja", 2003, "Logroño", "España", "Palacio de los Deportes", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("062", "Abanca Ademar León", 1956, "Léon", "España", "Palacio Municipal de los Deportes", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("063", "Angel Ximénez-Avia Puente Genil", 1984, "Puente Genil", "Córdoba", "Polideportivo Municipal Alcalde Miguel Salas", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("064", "Bathco BM Torrelavega", 2002, "Torrelavega", "España", "Pabellón Vicente Trueba", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("065", "Bada Huesca", 1995, "Huesca", "España", "Palacio Municipal de Deportes", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("066", "TM Benidorm", 1994, "Benidorm", "España", "Pabellón Liliana Fernández", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("067", "Helvetia Anaitasuna", 1956, "Pamplona", "España", "Pabellón Anaitasuna", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("068", "Balonmano Sinfín", 2004, "Santander", "España", "Pabellón de La Albericia", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("069", "Frigoríficos del Morrazo", 1961, "Cangas de Morrazo", "España", "Municipal O Gatañal", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("070", "Recoletas Atlético Valladolid", 2014, "Valladolid", "España", "Polideportivo Huerta del Rey", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("071", "Balonmano Guadalajara", 2007, "Guadalajara", "España", "Polideportivo Municipal David Santamaría", "Balonmano");
+insert into equipo (cod_equipo, nombre, fecha_fun, localidad, pais, estadio, deporte) values ("072", "Club Cisne BM", 1964, "Pontevedra", "España", "Estadio da Xuventude", "Balonmano");
+>>>>>>> 0b7b409ffd49cdd87e76c4d7d0940c72d25e39c5
 
 
 
