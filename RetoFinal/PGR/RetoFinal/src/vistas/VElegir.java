@@ -109,7 +109,6 @@ public class VElegir extends JFrame implements ActionListener {
 		if (e.getSource().equals(iniciarSesion)) {
 			iniciarSesion(inicioSesion);
 				if ((!admin.isActive() || !user.isActive()) || inicioSesion.isActive()) {
-					System.out.println("HOLA");
 					if (this.getExtendedState() == ICONIFIED)
 						this.dispose();
 				}

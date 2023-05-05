@@ -16,10 +16,11 @@ public class Equipo implements Serializable {
 	private String localidad;
 	private String pais;
 	private String estadio;
+	private String deporte;
 	
 	
 	//Creamos los constructores
-	public Equipo(String codEquipo, String nombreEquipo, int fechaFun, String localidad, String pais, String estadio) {
+	public Equipo(String codEquipo, String nombreEquipo, int fechaFun, String localidad, String pais, String estadio, String deporte) {
 		super();
 		this.codEquipo = codEquipo;
 		this.nombreEquipo = nombreEquipo;
@@ -27,6 +28,7 @@ public class Equipo implements Serializable {
 		this.localidad = localidad;
 		this.pais = pais;
 		this.estadio = estadio;
+		this.deporte = deporte;
 	}
 	
 	public Equipo() {
@@ -81,6 +83,14 @@ public class Equipo implements Serializable {
 
 	public void setEstadio(String estadio) {
 		this.estadio = estadio;
+	}
+
+	public String getDeporte() {
+		return deporte;
+	}
+
+	public void setDeporte(String deporte) {
+		this.deporte = deporte;
 	}
 	
 }
