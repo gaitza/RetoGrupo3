@@ -31,7 +31,7 @@ public class DaoImplementacion implements Dao {
 	private Connection con;
 	private PreparedStatement stnt;
 
-	// Sentencias SQL que se utilizaran para diferentes metodos
+	// Sentencias SQL que se utilizarana para diferentes metodos
 
 	// Sentencias SQL de REGISTRARSE
 	private final String REGISTRAR_CUENTA = "INSERT INTO Cuenta (Cod_Cuenta, Nombre_Cuenta, email, Contraseña) values (?, ?, ?, ?)";

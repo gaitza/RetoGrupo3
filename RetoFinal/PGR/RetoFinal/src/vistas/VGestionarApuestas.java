@@ -26,16 +26,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
-<<<<<<< HEAD
-public class VGestionarApuestas extends JDialog implements ActionListener{
-	
-	private final JPanel contentPanel = new JPanel();
-	private Dao dao;
-	private VElegir vElegir;
-	private JTable table;
-	private JButton btnVolver;
-	private JButton btnContinuar;
-=======
 import clases.Apuesta;
 import clases.ListadoApuestas;
 import javax.swing.UIManager;
@@ -49,7 +39,6 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 	private VElegir vElegir;
 	private JButton btnVolver;
 	private JTable tabla;
->>>>>>> 0b7b409ffd49cdd87e76c4d7d0940c72d25e39c5
 
 	public VGestionarApuestas(VElegir vElegir, boolean b, Dao dao) {
 		super(vElegir);
@@ -83,63 +72,24 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 		panel_1.setLayout(null);
 		panel_1.setBackground(Color.BLACK);
 		getContentPane().add(panel_1);
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> 0b7b409ffd49cdd87e76c4d7d0940c72d25e39c5
 		btnVolver = new JButton("Volver");
 		btnVolver.setForeground(new Color(173, 255, 47));
 		btnVolver.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnVolver.setFocusable(false);
 		btnVolver.setBorder(null);
 		btnVolver.setBackground(Color.DARK_GRAY);
-<<<<<<< HEAD
-		btnVolver.setBounds(50, 11, 107, 36);
-		btnVolver.addActionListener(this);
-		panel_1.add(btnVolver);
-		
-		btnContinuar = new JButton("Continuar");
-		btnContinuar.setForeground(new Color(173, 255, 47));
-		btnContinuar.setFont(new Font("Arial", Font.PLAIN, 14));
-		btnContinuar.setFocusable(false);
-		btnContinuar.setBorder(null);
-		btnContinuar.setBackground(Color.DARK_GRAY);
-		btnContinuar.setBounds(334, 11, 107, 36);
-		btnContinuar.addActionListener(this); 
-		panel_1.add(btnContinuar);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 109, 459, 372);
-		getContentPane().add(scrollPane);
-		
-		table = new JTable();
-		table.setForeground(new Color(173, 255, 47));
-		table.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		table.setBackground(Color.DARK_GRAY);
-		table.setFont(new Font("Arial", Font.PLAIN, 16));
-		scrollPane.setColumnHeaderView(table);
-=======
 		btnVolver.setBounds(183, 11, 107, 36);
 		btnVolver.addActionListener(this);
 		panel_1.add(btnVolver);
 
 		List<ListadoApuestas> apuestas = dao.listarApuestas();
 		presentarTabla(apuestas);
->>>>>>> 0b7b409ffd49cdd87e76c4d7d0940c72d25e39c5
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-				if(e.getSource().equals(btnVolver)) {
-					volver();
-				}
-				if(e.getSource().equals(btnContinuar)) {
-					eleccion();
-				}
-=======
 		if (e.getSource().equals(btnVolver)) {
 			volver();
 		}
@@ -177,7 +127,6 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 		scroll.setViewportView(tabla);
 		getContentPane().add(scroll);
 		scroll.setBounds(10, 132, 459, 355);
->>>>>>> 0b7b409ffd49cdd87e76c4d7d0940c72d25e39c5
 		
 		JLabel lblNewLabel_1 = new JLabel("APUESTAS GENERADAS");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -203,18 +152,5 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 		}
 
 		return new JTable(model);
-	}
-	
-	private void eleccion() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void volver() {
-		// TODO Auto-generated method stub
-		this.setFocusableWindowState(false);
-		this.dispose();
-		VMenuAdmin vent = new VMenuAdmin(vElegir, true, dao);
-		vent.setVisible(true);
 	}
 }
