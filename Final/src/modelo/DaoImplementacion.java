@@ -36,10 +36,10 @@ public class DaoImplementacion implements Dao {
 	private final String BUSCAR_ADMIN = "SELECT * FROM Administrador WHERE Cod_Cuenta=?";
 	private final String BUSCAR_USER = "SELECT * FROM Cuenta WHERE Nombre_Cuenta=? && Contraseña=?";
 	private final String CONSEGUIR_CONTRASEÑA = "SELECT * FROM Cuenta WHERE email=?";
-	
+
 	// Sentencias SQL de CREAR APUESTA
-		private final String CONSULTA_DEPORTE = "SELECT * FROM deporte";
-		private final String CONSULTA_COMPETICION = "SELECT * FROM competicion";
+	private final String CONSULTA_DEPORTE = "SELECT * FROM deporte";
+	private final String CONSULTA_COMPETICION = "SELECT * FROM competicion";
 
 	// Metodo conexion con bda
 	public void abrirConexion() {
@@ -48,13 +48,13 @@ public class DaoImplementacion implements Dao {
 			String rutaProyecto = System.getProperty("user.dir");
 			FileInputStream fis = new FileInputStream(rutaProyecto + "\\src\\modelo\\ConexionBDA.properties");
 			conexionBDA.load(fis);
-			
+
 			final String URL = conexionBDA.getProperty("url");
 			final String USER = conexionBDA.getProperty("user");
 			final String PASSWORD = conexionBDA.getProperty("password");
-			
-			con=DriverManager.getConnection(URL, USER, PASSWORD);
-			
+
+			con = DriverManager.getConnection(URL, USER, PASSWORD);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -283,100 +283,140 @@ public class DaoImplementacion implements Dao {
 		ResultSet rs = null;
 		Competicion com;
 		List<Competicion> competiciones = new ArrayList<>();
-		
-		//1� Paso
-				this.abrirConexion();
-				
-				//Preparar sentencia SQL
+
+		// 1� Paso
+		this.abrirConexion();
+
+		// Preparar sentencia SQL
+		try {
+			// 2� Paso preparar sentencia SQL
+			stnt = con.prepareStatement(CONSULTA_COMPETICION);
+
+			// 3� Paso ejecutar sentencia SQL
+			rs = stnt.executeQuery();
+
+			while (rs.next()) {
+				com = new Competicion();
+				com.setCodCompeticion(rs.getString(1));
+				com.setNombre(rs.getString(2));
+				com.setDeporte(rs.getString(3));
+				competiciones.add(com);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+
+			// Ultimo Paso
+			if (rs != null) {
 				try {
-					//2� Paso preparar sentencia SQL
-					stnt = con.prepareStatement(CONSULTA_COMPETICION);
-					
-					//3� Paso ejecutar sentencia SQL
-					rs = stnt.executeQuery();
-					
-					while(rs.next()) {
-						com = new Competicion();
-						com.setCodCompeticion(rs.getString(1));
-						com.setNombre(rs.getString(2));
-						com.setDeporte(rs.getString(3));
-						competiciones.add(com);
-					}
-										
+					rs.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} finally {
-					
-				
-				//Ultimo Paso
-				if(rs != null) {
-					try {
-						rs.close();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 				}
-				
-				this.cerrarConexion();
-		
+			}
+
+			this.cerrarConexion();
+
 		}
-				
+
 		return competiciones;
 	}
 
 	@Override
 	public List<Deporte> listarDeporte() {
 		// TODO Auto-generated method stub
-				ResultSet rs = null;
-				Deporte dep;
-				List<Deporte> deportes = new ArrayList<>();
-				
-				//1� Paso
-						this.abrirConexion();
-						
-						//Preparar sentencia SQL
-						try {
-							//2� Paso preparar sentencia SQL
-							stnt = con.prepareStatement(CONSULTA_DEPORTE);
-							
-							//3� Paso ejecutar sentencia SQL
-							rs = stnt.executeQuery();
-							
-							while(rs.next()) {
-								dep = new Deporte();
-								dep.setCodDep(rs.getString(1));
-								dep.setNombreDep(rs.getString(2));
-								deportes.add(dep);
-							}
-												
-						} catch (SQLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} finally {
-							
-						
-						//Ultimo Paso
-						if(rs != null) {
-							try {
-								rs.close();
-							} catch (SQLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-						
-						this.cerrarConexion();
-				
-				}
-						
-				return deportes;
+		ResultSet rs = null;
+		Deporte dep;
+		List<Deporte> deportes = new ArrayList<>();
+
+		// 1� Paso
+		this.abrirConexion();
+
+		// Preparar sentencia SQL
+		try {
+			// 2� Paso preparar sentencia SQL
+			stnt = con.prepareStatement(CONSULTA_DEPORTE);
+
+			// 3� Paso ejecutar sentencia SQL
+			rs = stnt.executeQuery();
+
+			while (rs.next()) {
+				dep = new Deporte();
+				dep.setCodDep(rs.getString(1));
+				dep.setNombreDep(rs.getString(2));
+				deportes.add(dep);
 			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+
+			// Ultimo Paso
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			this.cerrarConexion();
+
+		}
+
+		return deportes;
+	}
 
 	@Override
 	public List<Partido> listarPartidos() {
 		// TODO Auto-generated method stub
-		return null;
+		ResultSet rs = null;
+		Partido par;
+		List<Partido> partidos = new ArrayList<>();
+
+		// 1� Paso
+		this.abrirConexion();
+
+		// Preparar sentencia SQL
+		try {
+			// 2� Paso preparar sentencia SQL
+			stnt = con.prepareStatement(CONSULTA_DEPORTE);
+
+			// 3� Paso ejecutar sentencia SQL
+			rs = stnt.executeQuery();
+
+			while (rs.next()) {
+				par = new Partido();
+				par.setCodPartido(rs.getString(1));
+				par.setFechaPartido(rs.getDate(2).toLocalDate());
+				par.setResultado(rs.getString(3));
+				partidos.add(par);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+
+			// Ultimo Paso
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			this.cerrarConexion();
+
+		}
+
+		return partidos;
 	}
 }
