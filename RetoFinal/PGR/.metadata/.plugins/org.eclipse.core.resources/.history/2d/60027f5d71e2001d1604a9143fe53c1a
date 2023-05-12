@@ -1,0 +1,17 @@
+package clases;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+
+public class Apuesta implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private int codApuesta;
+	private LocalDate fechaApuesta;
+	private float cuota;
+
+}
