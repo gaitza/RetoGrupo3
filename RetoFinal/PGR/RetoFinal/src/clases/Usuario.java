@@ -10,6 +10,7 @@ public class Usuario extends Cuenta {
 	private static final long serialVersionUID = 1L;
 	
 	//Declaramos las variables
+	/*pin y cvv son string para poder introducir 0 como primer numero*/
 	private long nTarjeta;
 	private LocalDate FechaCaducidad;
 	private String cvv;

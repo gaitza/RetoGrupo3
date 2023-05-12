@@ -8,15 +8,20 @@ import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import clases.Cuenta;
+import clases.Usuario;
 import modelo.Dao;
 import java.awt.Window.Type;
 
@@ -33,13 +38,18 @@ public class VMenuUser extends JDialog implements ActionListener {
 	private JButton btnApuestasRealizadas;
 	private JButton btnRetirarDinero;
 	private JButton btnIngresarDinero;
+	private Cuenta cuenta;
+	private JPanel panel_2;
+	private List<Usuario> usuarios;
 
-	public VMenuUser(VElegir vElegir, boolean b, Dao dao) {
+	public VMenuUser(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
 		this.setModal(b);
 		this.dao = dao;
 		this.vElegir = vElegir;
+		this.cuenta = cuenta;
+		this.usuarios = dao.listarUsuarios();
 
 		String ruta = System.getProperty("user.dir");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ruta + "\\src\\fotos\\Logo.jpg"));
@@ -96,7 +106,7 @@ public class VMenuUser extends JDialog implements ActionListener {
 		btnEditarPerfil.setFocusable(false);
 		btnEditarPerfil.setBorder(null);
 		btnEditarPerfil.setBackground(Color.DARK_GRAY);
-		btnEditarPerfil.setBounds(51, 132, 380, 35);
+		btnEditarPerfil.setBounds(52, 141, 380, 35);
 		btnEditarPerfil.addActionListener(this);
 		contentPanel.add(btnEditarPerfil);
 
@@ -106,7 +116,7 @@ public class VMenuUser extends JDialog implements ActionListener {
 		btnRealizarApuesta.setFocusable(false);
 		btnRealizarApuesta.setBorder(null);
 		btnRealizarApuesta.setBackground(Color.DARK_GRAY);
-		btnRealizarApuesta.setBounds(51, 190, 380, 35);
+		btnRealizarApuesta.setBounds(52, 199, 380, 35);
 		btnRealizarApuesta.addActionListener(this);
 		contentPanel.add(btnRealizarApuesta);
 
@@ -116,7 +126,7 @@ public class VMenuUser extends JDialog implements ActionListener {
 		btnRealizarApuestaCon.setFocusable(false);
 		btnRealizarApuestaCon.setBorder(null);
 		btnRealizarApuestaCon.setBackground(Color.DARK_GRAY);
-		btnRealizarApuestaCon.setBounds(51, 249, 380, 35);
+		btnRealizarApuestaCon.setBounds(52, 258, 380, 35);
 		btnRealizarApuestaCon.addActionListener(this);
 		contentPanel.add(btnRealizarApuestaCon);
 
@@ -126,7 +136,7 @@ public class VMenuUser extends JDialog implements ActionListener {
 		btnApuestasRealizadas.setFocusable(false);
 		btnApuestasRealizadas.setBorder(null);
 		btnApuestasRealizadas.setBackground(Color.DARK_GRAY);
-		btnApuestasRealizadas.setBounds(51, 309, 380, 35);
+		btnApuestasRealizadas.setBounds(52, 318, 380, 35);
 		btnApuestasRealizadas.addActionListener(this);
 		contentPanel.add(btnApuestasRealizadas);
 
@@ -136,7 +146,7 @@ public class VMenuUser extends JDialog implements ActionListener {
 		btnRetirarDinero.setFocusable(false);
 		btnRetirarDinero.setBorder(null);
 		btnRetirarDinero.setBackground(Color.DARK_GRAY);
-		btnRetirarDinero.setBounds(51, 421, 380, 35);
+		btnRetirarDinero.setBounds(52, 430, 380, 35);
 		btnRetirarDinero.addActionListener(this);
 		contentPanel.add(btnRetirarDinero);
 
@@ -146,14 +156,38 @@ public class VMenuUser extends JDialog implements ActionListener {
 		btnIngresarDinero.setFocusable(false);
 		btnIngresarDinero.setBorder(null);
 		btnIngresarDinero.setBackground(Color.DARK_GRAY);
-		btnIngresarDinero.setBounds(51, 365, 380, 35);
+		btnIngresarDinero.setBounds(52, 374, 380, 35);
 		btnIngresarDinero.addActionListener(this);
 		contentPanel.add(btnIngresarDinero);
+		
+		panel_2 = new JPanel();
+		panel_2.setLayout(null);
+		panel_2.setBackground(Color.DARK_GRAY);
+		panel_2.setBounds(0, 88, 479, 29);
+		contentPanel.add(panel_2);
 
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(ruta+"\\src\\fotos\\fondoUser.png"));
 		lblNewLabel_1.setBounds(0, 88, 479, 413);
 		contentPanel.add(lblNewLabel_1);
+		
+		for (Usuario usuario : usuarios) {
+			if (usuario.getCodCuenta().equals(cuenta.getCodCuenta())) {
+				JLabel lblNombreC = new JLabel("Cuenta: "+cuenta.getNombreCuenta());
+				lblNombreC.setHorizontalAlignment(SwingConstants.LEFT);
+				lblNombreC.setFont(new Font("Arial", Font.BOLD, 12));
+				lblNombreC.setForeground(new Color(173, 255, 47));
+				lblNombreC.setBounds(10, 0, 223, 29);
+				panel_2.add(lblNombreC);
+
+				JLabel lblDineroEnLa = new JLabel("DINERO: " + usuario.getSaldo() + "€");
+				lblDineroEnLa.setHorizontalAlignment(SwingConstants.RIGHT);
+				lblDineroEnLa.setFont(new Font("Arial", Font.BOLD, 12));
+				lblDineroEnLa.setForeground(new Color(173, 255, 47));
+				lblDineroEnLa.setBounds(246, 0, 223, 29);
+				panel_2.add(lblDineroEnLa);
+			}
+		}
 
 	}
 
@@ -162,6 +196,56 @@ public class VMenuUser extends JDialog implements ActionListener {
 		// TODO Auto-generated method stub
 		if(e.getSource().equals(cerrarSesion)) {
 			cerrarSesion();
+		}
+		if(e.getSource().equals(darseDeBaja)) {
+			baja();
+		}
+		if(e.getSource().equals(btnEditarPerfil)) {
+			editarPerfil();
+		}
+		if(e.getSource().equals(btnIngresarDinero)) {
+			ingresar();
+		}
+		if(e.getSource().equals(btnRetirarDinero)) {
+			retirar();
+		}
+	}
+
+	private void retirar() {
+		// TODO Auto-generated method stub
+		this.dispose();
+		VRetirarDinero vent = new VRetirarDinero(vElegir, true, dao, cuenta);
+		vent.setVisible(true);
+	}
+
+	private void ingresar() {
+		// TODO Auto-generated method stub
+		this.dispose();
+		VIngresarDinero vent = new VIngresarDinero(vElegir, true, dao, cuenta);
+		vent.setVisible(true);
+	}
+
+	private void editarPerfil() {
+		// TODO Auto-generated method stub
+		this.dispose();
+		VEditarPerfil vent = new VEditarPerfil(vElegir, true, dao, cuenta);
+		vent.setVisible(true);
+	}
+
+	private void baja() {
+		// TODO Auto-generated method stub
+		int opc= JOptionPane.showConfirmDialog(this, "ESTAS SEGURO DE QUERER ELIMINAR TU CUENTA?\nSE BORRARA DE LA BASE DE DATOS Y NO SE PODRA RECUPERAR.");
+		
+		if(opc==0) {
+			if (dao.darseDeBaja(cuenta)) {
+				JOptionPane.showMessageDialog(this, "BAJA REALIZADA CORRECTAMENTE.");
+			} else {
+				JOptionPane.showMessageDialog(this, "ERROR EN LA BAJA DE LA CUENTA.");
+			}
+		}else if(opc==1) {
+			JOptionPane.showMessageDialog(this, "LA CUENTA NO SE HA DADO DE BAJA.");
+		}else if(opc==2) {
+			JOptionPane.showMessageDialog(this, "DARSE DE BAJA CANCELADO.");
 		}
 	}
 

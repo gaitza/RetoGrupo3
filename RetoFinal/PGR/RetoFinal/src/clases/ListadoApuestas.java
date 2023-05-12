@@ -10,9 +10,10 @@ public class ListadoApuestas {
 	private LocalDate fApuesta;
 	private float cuota;
 	private String codPartido;
+	private String codApuesta;
 	
 	//Constructores
-	public ListadoApuestas(String eLocal, String eVisitante, LocalDate fPartido, LocalDate fApuesta, float cuota, String codPartido) {
+	public ListadoApuestas(String eLocal, String eVisitante, LocalDate fPartido, LocalDate fApuesta, float cuota, String codPartido, String codApuesta) {
 		super();
 		this.eLocal = eLocal;
 		this.eVisitante = eVisitante;
@@ -20,6 +21,7 @@ public class ListadoApuestas {
 		this.fApuesta = fApuesta;
 		this.cuota = cuota;
 		this.codPartido=codPartido;
+		this.codApuesta = codApuesta;
 	}
 	
 	public ListadoApuestas() {
@@ -73,6 +75,14 @@ public class ListadoApuestas {
 
 	public void setCodPartido(String codPartido) {
 		this.codPartido = codPartido;
+	}
+
+	public String getCodApuesta() {
+		return codApuesta;
+	}
+
+	public void setCodApuesta(String codApuesta) {
+		this.codApuesta = codApuesta;
 	}
 	
 	

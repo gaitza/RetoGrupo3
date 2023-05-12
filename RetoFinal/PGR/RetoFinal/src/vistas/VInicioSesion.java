@@ -188,11 +188,11 @@ public class VInicioSesion extends JDialog implements ActionListener {
 		if (cuenta != null) {
 			if (dao.esAdmin(cuenta.getCodCuenta())) {
 				this.dispose();
-				VMenuAdmin vent = new VMenuAdmin(vElegir, true, dao);
+				VMenuAdmin vent = new VMenuAdmin(vElegir, true, dao, cuenta);
 				vent.setVisible(true);
 			} else {
 				this.dispose();
-				VMenuUser vent = new VMenuUser(vElegir, true, dao);
+				VMenuUser vent = new VMenuUser(vElegir, true, dao, cuenta);
 				vent.setVisible(true);
 			}
 		} else {

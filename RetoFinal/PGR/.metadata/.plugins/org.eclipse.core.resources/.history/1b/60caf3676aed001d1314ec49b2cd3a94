@@ -1,0 +1,417 @@
+package vistas;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import clases.Equipo;
+import modelo.Dao;
+
+public class VModificar extends JDialog implements ActionListener {
+
+	private final JPanel contentPanel = new JPanel();
+	private Dao dao;
+	private VElegir vElegir;
+	private JButton btnVolver;
+	private JButton btnContinuar;
+	private JRadioButton jugador;
+	private JRadioButton equipo;
+	private JRadioButton deporte;
+	private JRadioButton competicion;
+	private ButtonGroup grupo;
+	private JPanel panelJugador;
+	private JPanel panelEquipo;
+	private JPanel panelDeporte;
+	private JPanel panelCompeticion;
+	private JTextField nombreE;
+	private JTextField fechaFun;
+	private JTextField localidad;
+	private JTextField pais;
+	private JTextField estadio;
+	private JTextField nombreDep;
+	private JLabel lblNewLabel;
+	private JTextField deporteC;
+	private JTextField nombreComp;
+	private JLabel lblIntroduceElNombre;
+	private JLabel lblIntroduceElDeporte;
+	private JTable table;
+
+	
+	public VModificar(VElegir vElegir, boolean b, Dao dao) {
+		super(vElegir);
+		setTitle("Retabet.es");
+		this.setModal(b);
+		this.dao = dao;
+		this.vElegir = vElegir;
+
+		setTitle("Retabet.es");
+		String ruta = System.getProperty("user.dir");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ruta + "\\src\\fotos\\Logo.jpg"));
+
+		setBounds(100, 100, 495, 595);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(173, 255, 47));
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		setLocationRelativeTo(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setLayout(null);
+		panel_1.setBackground(Color.BLACK);
+		panel_1.setBounds(0, 498, 479, 58);
+		contentPanel.add(panel_1);
+		
+		btnVolver = new JButton("Volver");
+		btnVolver.setForeground(new Color(173, 255, 47));
+		btnVolver.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnVolver.setFocusable(false);
+		btnVolver.setBorder(null);
+		btnVolver.setBackground(Color.DARK_GRAY);
+		btnVolver.setBounds(37, 11, 107, 36);
+		btnVolver.addActionListener(this);
+		panel_1.add(btnVolver);
+		
+		btnContinuar = new JButton("Confirmar");
+		btnContinuar.setBounds(337, 11, 107, 36);
+		panel_1.add(btnContinuar);
+		btnContinuar.setForeground(new Color(173, 255, 47));
+		btnContinuar.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnContinuar.setFocusable(false);
+		btnContinuar.setBorder(null);
+		btnContinuar.setBackground(Color.DARK_GRAY);
+		btnContinuar.addActionListener(this);
+		
+		JLabel lblNewLabel_1 = new JLabel("Escoge la opcion de lo que quieras modificar:");
+		lblNewLabel_1.setForeground(Color.DARK_GRAY);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 18));
+		lblNewLabel_1.setBounds(0, 89, 479, 35);
+		contentPanel.add(lblNewLabel_1);
+		
+		jugador = new JRadioButton("Jugador");
+		jugador.setForeground(Color.DARK_GRAY);
+		jugador.setHorizontalAlignment(SwingConstants.CENTER);
+		jugador.setFont(new Font("Arial", Font.PLAIN, 14));
+		jugador.setBackground(new Color(173, 255, 47));
+		jugador.setBounds(0, 143, 120, 23);
+		jugador.setFocusable(false);
+		jugador.setBorder(null);
+		jugador.addActionListener(this);
+		contentPanel.add(jugador);
+		
+		equipo = new JRadioButton("Equipo");
+		equipo.setForeground(Color.DARK_GRAY);
+		equipo.setHorizontalAlignment(SwingConstants.CENTER);
+		equipo.setFont(new Font("Arial", Font.PLAIN, 14));
+		equipo.setBackground(new Color(173, 255, 47));
+		equipo.setBounds(122, 144, 120, 23);
+		equipo.setFocusable(false);
+		equipo.setBorder(null);
+		equipo.addActionListener(this);
+		contentPanel.add(equipo);
+		
+		deporte = new JRadioButton("Deporte");
+		deporte.setForeground(Color.DARK_GRAY);
+		deporte.setHorizontalAlignment(SwingConstants.CENTER);
+		deporte.setFont(new Font("Arial", Font.PLAIN, 14));
+		deporte.setBackground(new Color(173, 255, 47));
+		deporte.setBounds(244, 144, 120, 23);
+		deporte.setFocusable(false);
+		deporte.setBorder(null);
+		deporte.addActionListener(this);
+		contentPanel.add(deporte);
+		
+		competicion = new JRadioButton("Competición");
+		competicion.setForeground(Color.DARK_GRAY);
+		competicion.setHorizontalAlignment(SwingConstants.CENTER);
+		competicion.setFont(new Font("Arial", Font.PLAIN, 14));
+		competicion.setBackground(new Color(173, 255, 47));
+		competicion.setBounds(359, 144, 120, 23);
+		competicion.setFocusable(false);
+		competicion.setBorder(null);
+		competicion.addActionListener(this);
+		contentPanel.add(competicion);
+		
+		grupo = new ButtonGroup();
+		grupo.add(jugador);
+		grupo.add(equipo);
+		grupo.add(deporte);
+		grupo.add(competicion);
+		
+		panelDeporte = new JPanel();
+		panelDeporte.setBackground(new Color(173, 255, 47));
+		panelDeporte.setBounds(0, 177, 479, 318);
+		contentPanel.add(panelDeporte);
+		panelDeporte.setLayout(null);
+		
+		nombreDep = new JTextField();
+		nombreDep.setFont(new Font("Arial", Font.PLAIN, 16));
+		nombreDep.setColumns(10);
+		nombreDep.setBounds(148, 149, 200, 37);
+		panelDeporte.add(nombreDep);
+		
+		lblNewLabel = new JLabel("<html>Introduce el nuevo nombre del deporte: (en caso de querer modificarlo)</html>");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setForeground(Color.DARK_GRAY);
+		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 16));
+		lblNewLabel.setBounds(95, 98, 305, 40);
+		panelDeporte.add(lblNewLabel);
+		panelDeporte.setVisible(false);
+		
+		panelCompeticion = new JPanel();
+		panelCompeticion.setBackground(new Color(173, 255, 47));
+		panelCompeticion.setBounds(0, 177, 479, 321);
+		contentPanel.add(panelCompeticion);
+		panelCompeticion.setLayout(null);
+		
+		deporteC = new JTextField();
+		deporteC.setFont(new Font("Arial", Font.PLAIN, 16));
+		deporteC.setColumns(10);
+		deporteC.setBounds(143, 89, 200, 37);
+		panelCompeticion.add(deporteC);
+		
+		nombreComp = new JTextField();
+		nombreComp.setFont(new Font("Arial", Font.PLAIN, 16));
+		nombreComp.setColumns(10);
+		nombreComp.setBounds(143, 217, 200, 37);
+		panelCompeticion.add(nombreComp);
+		
+		lblIntroduceElNombre = new JLabel("<html>Introduce el nombre nuevo de la competición: (en caso de querer modificarlo)</html>");
+		lblIntroduceElNombre.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIntroduceElNombre.setForeground(Color.DARK_GRAY);
+		lblIntroduceElNombre.setFont(new Font("Arial", Font.BOLD, 16));
+		lblIntroduceElNombre.setBounds(61, 38, 355, 40);
+		panelCompeticion.add(lblIntroduceElNombre);
+		
+		lblIntroduceElDeporte = new JLabel("<html>Introduce el deporte nuevo al que pertenece la competición: (en caso de querer modificarlo)</html>");
+		lblIntroduceElDeporte.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIntroduceElDeporte.setForeground(Color.DARK_GRAY);
+		lblIntroduceElDeporte.setFont(new Font("Arial", Font.BOLD, 16));
+		lblIntroduceElDeporte.setBounds(61, 166, 361, 40);
+		panelCompeticion.add(lblIntroduceElDeporte);
+		
+		panelJugador = new JPanel();
+		panelJugador.setBorder(null);
+		panelJugador.setLayout(null);
+		panelJugador.setBackground(new Color(173, 255, 47));
+		panelJugador.setBounds(0, 180, 479, 318);
+		contentPanel.add(panelJugador);
+		panelJugador.setVisible(false);
+		
+		panelEquipo = new JPanel();
+		panelEquipo.setBounds(0, 177, 479, 318);
+		contentPanel.add(panelEquipo);
+		panelEquipo.setBackground(new Color(173, 255, 47));
+		panelEquipo.setLayout(null);
+		
+		nombreE = new JTextField();
+		nombreE.setFont(new Font("Arial", Font.PLAIN, 16));
+		nombreE.setColumns(10);
+		nombreE.setBounds(252, 11, 200, 37);
+		panelEquipo.add(nombreE);
+		
+		fechaFun = new JTextField();
+		fechaFun.setFont(new Font("Arial", Font.PLAIN, 16));
+		fechaFun.setColumns(10);
+		fechaFun.setBounds(252, 59, 200, 37);
+		panelEquipo.add(fechaFun);
+		
+		localidad = new JTextField();
+		localidad.setFont(new Font("Arial", Font.PLAIN, 16));
+		localidad.setColumns(10);
+		localidad.setBounds(252, 107, 200, 37);
+		panelEquipo.add(localidad);
+		
+		pais = new JTextField();
+		pais.setFont(new Font("Arial", Font.PLAIN, 16));
+		pais.setColumns(10);
+		pais.setBounds(252, 155, 200, 37);
+		panelEquipo.add(pais);
+		
+		estadio = new JTextField();
+		estadio.setFont(new Font("Arial", Font.PLAIN, 16));
+		estadio.setColumns(10);
+		estadio.setBounds(252, 203, 200, 37);
+		panelEquipo.add(estadio);
+		
+		JLabel lblNombre_1 = new JLabel("Nombre:");
+		lblNombre_1.setForeground(Color.DARK_GRAY);
+		lblNombre_1.setFont(new Font("Arial", Font.BOLD, 16));
+		lblNombre_1.setBounds(10, 11, 232, 37);
+		panelEquipo.add(lblNombre_1);
+		
+		JLabel lblFechaFundacin = new JLabel("Fecha Fundación:");
+		lblFechaFundacin.setForeground(Color.DARK_GRAY);
+		lblFechaFundacin.setFont(new Font("Arial", Font.BOLD, 16));
+		lblFechaFundacin.setBounds(10, 59, 232, 37);
+		panelEquipo.add(lblFechaFundacin);
+		
+		JLabel lblLocalidad = new JLabel("Localidad");
+		lblLocalidad.setForeground(Color.DARK_GRAY);
+		lblLocalidad.setFont(new Font("Arial", Font.BOLD, 16));
+		lblLocalidad.setBounds(10, 107, 232, 37);
+		panelEquipo.add(lblLocalidad);
+		
+		JLabel lblPais = new JLabel("Pais:");
+		lblPais.setForeground(Color.DARK_GRAY);
+		lblPais.setFont(new Font("Arial", Font.BOLD, 16));
+		lblPais.setBounds(10, 155, 232, 37);
+		panelEquipo.add(lblPais);
+		
+		JLabel lblEstadio = new JLabel("Estadio:");
+		lblEstadio.setForeground(Color.DARK_GRAY);
+		lblEstadio.setFont(new Font("Arial", Font.BOLD, 16));
+		lblEstadio.setBounds(10, 203, 232, 37);
+		panelEquipo.add(lblEstadio);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setLayout(null);
+		panel_2.setBackground(Color.BLACK);
+		panel_2.setBounds(0, 0, 479, 88);
+		contentPanel.add(panel_2);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(ruta+"\\src\\fotos\\Cabecera.jpg"));
+		lblNewLabel_2.setBounds(156, 0, 220, 88);
+		panel_2.add(lblNewLabel_2);
+		
+		panelEquipo.setVisible(false);
+		panelJugador.setVisible(false);
+		panelCompeticion.setVisible(false);
+		
+		List<Equipo> equipos = dao.listadoEquipos();
+		presentarTabla(equipos);
+		
+	}
+
+	public void presentarTabla(List<Equipo> equipos) {
+		JScrollPane scroll = new JScrollPane();
+		scroll.setLocation(10, 310);
+		scroll.setSize(459, -267);
+		scroll.setBorder(null);
+		scroll.getViewport().setBackground(new Color(173, 255, 47));
+		scroll.setEnabled(false);
+		scroll.setBorder(BorderFactory.createEmptyBorder());
+		panelJugador.add(scroll);
+		
+		table = new JTable((TableModel) null);
+		table = this.cargarTabla(equipos);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int fila=table.getSelectedRow();
+				VEscogerJugador vent = new VEscogerJugador(vElegir, true, dao, equipos.get(fila));
+				vent.setVisible(true);
+			}
+		});
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setBorder(null);
+		table.setBackground(Color.DARK_GRAY);
+		table.setForeground(new Color(173, 255, 47));
+		table.setFont(new Font("Arial", Font.PLAIN, 14));
+		table.setRowHeight(40);
+		scroll.setViewportView(table);
+		scroll.setBounds(10, 50, 459, 257);
+	}
+
+	private JTable cargarTabla(List<Equipo> equipos) {
+		// TODO Auto-generated method stub
+		String[] cabeceras = {"NOMBRE", "AÑO F.", "LOCALIDAD","PAIS", "ESTADIO", "DEPORTE"};
+		String[] fila = new String[10];
+
+		DefaultTableModel model = new DefaultTableModel(null, cabeceras);
+
+		for (Equipo a : equipos) {
+			fila[0] = a.getNombreEquipo() + "";
+			fila[1] = a.getFechaFun() + "";
+			fila[2] = a.getLocalidad() + "";
+			fila[3] = a.getPais() + "";
+			fila[4] = a.getEstadio() + "";
+			fila[5] = a.getDeporte() + "";
+
+			model.addRow(fila);
+		}
+
+		return new JTable(model);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(jugador.isSelected()) {
+			panelJugador.setVisible(true);
+			panelEquipo.setVisible(false);
+			panelDeporte.setVisible(false);
+			panelCompeticion.setVisible(false);
+		}
+		if(equipo.isSelected()) {
+			panelEquipo.setVisible(true);
+			panelJugador.setVisible(false);
+			panelDeporte.setVisible(false);
+			panelCompeticion.setVisible(false);
+		}
+		if(deporte.isSelected()) {
+			panelEquipo.setVisible(false);
+			panelJugador.setVisible(false);
+			panelDeporte.setVisible(true);
+			panelCompeticion.setVisible(false);
+		}
+		if(competicion.isSelected()) {
+			panelEquipo.setVisible(false);
+			panelJugador.setVisible(false);
+			panelDeporte.setVisible(false);
+			panelCompeticion.setVisible(true);
+		}
+		
+		
+		
+		if(e.getSource().equals(btnVolver)) {
+			volver();
+		}
+		if(e.getSource().equals(btnContinuar)) {
+			eleccion();
+		}
+	}
+
+
+	private void eleccion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	private void volver() {
+		// TODO Auto-generated method stub
+		this.setFocusableWindowState(false);
+		this.dispose();
+		VMenuAdmin vent = new VMenuAdmin(vElegir, true, dao);
+		vent.setVisible(true);
+	}
+
+}

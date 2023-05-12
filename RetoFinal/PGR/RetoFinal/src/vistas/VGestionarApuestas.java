@@ -27,6 +27,7 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
 import clases.Apuesta;
+import clases.Cuenta;
 import clases.ListadoApuestas;
 import javax.swing.UIManager;
 import javax.swing.ListSelectionModel;
@@ -39,14 +40,16 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 	private VElegir vElegir;
 	private JButton btnVolver;
 	private JTable tabla;
+	private Cuenta cuenta;
 
-	public VGestionarApuestas(VElegir vElegir, boolean b, Dao dao) {
+	public VGestionarApuestas(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		getContentPane().setBackground(new Color(173, 255, 47));
 		setTitle("Retabet.es");
 		this.setModal(b);
 		this.dao = dao;
 		this.vElegir = vElegir;
+		this.cuenta = cuenta;
 
 		setTitle("Retabet.es");
 		String ruta = System.getProperty("user.dir");
@@ -99,7 +102,7 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 		// TODO Auto-generated method stub
 		this.setFocusableWindowState(false);
 		this.dispose();
-		VMenuAdmin vent = new VMenuAdmin(vElegir, true, dao);
+		VMenuAdmin vent = new VMenuAdmin(vElegir, true, dao, cuenta);
 		vent.setVisible(true);
 	}
 
@@ -114,7 +117,7 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int fila=tabla.getSelectedRow();
-				VPonerResultado vent = new VPonerResultado(vElegir, true, dao, apuestas.get(fila));
+				VPonerResultado vent = new VPonerResultado(vElegir, true, dao, apuestas.get(fila), cuenta);
 				vent.setVisible(true);
 			}
 		});
@@ -136,10 +139,10 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 	}
 
 	public JTable cargarTabla(List<ListadoApuestas> apuestas) {
-		String[] cabezeras = {"EQUIPO L.", "EQUIPO V.", "FECHA P.","FECHA A.", "CUOTA"};
+		String[] cabeceras = {"EQUIPO L.", "EQUIPO V.", "FECHA P.","FECHA A.", "CUOTA"};
 		String[] fila = new String[10];
 
-		DefaultTableModel model = new DefaultTableModel(null, cabezeras);
+		DefaultTableModel model = new DefaultTableModel(null, cabeceras);
 
 		for (ListadoApuestas a : apuestas) {
 			fila[0] = a.geteLocal() + "";

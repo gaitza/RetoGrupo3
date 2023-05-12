@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import clases.Competicion;
+import clases.Cuenta;
 import clases.Deporte;
 import clases.Equipo;
 import clases.ListadoApuestas;
@@ -39,13 +40,15 @@ public class VRelacionar extends JDialog implements ActionListener {
 	private List<Deporte> listadoDeporte;
 	private List<Competicion> listadoCompeticiones;
 	private List<Equipo> listadoEquipos;
+	private Cuenta cuenta;
 
-	public VRelacionar(VElegir vElegir, boolean b, Dao dao) {
+	public VRelacionar(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
 		this.setModal(b);
 		this.dao = dao;
 		this.vElegir = vElegir;
+		this.cuenta = cuenta;
 
 		setTitle("Retabet.es");
 		String ruta = System.getProperty("user.dir");
@@ -66,7 +69,7 @@ public class VRelacionar extends JDialog implements ActionListener {
 		contentPanel.add(panel);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(ruta + "\\src\\fotos\\Cabecera.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(ruta+"\\src\\fotos\\Cabecera.jpg"));
 		lblNewLabel.setBounds(156, 0, 220, 88);
 		panel.add(lblNewLabel);
 
@@ -231,7 +234,7 @@ public class VRelacionar extends JDialog implements ActionListener {
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.dispose();
-		VInsertarBDA vent = new VInsertarBDA(vElegir, true, dao);
+		VInsertarBDA vent = new VInsertarBDA(vElegir, true, dao, cuenta);
 		vent.setVisible(true);
 	}
 }

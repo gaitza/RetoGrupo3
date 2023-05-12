@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import clases.Cuenta;
 import modelo.Dao;
 
 public class VMenuAdmin extends JDialog implements ActionListener {
@@ -30,13 +31,15 @@ public class VMenuAdmin extends JDialog implements ActionListener {
 	private JButton insertarBDA;
 	private JButton darBaja;
 	private JButton modificar;
+	private Cuenta cuenta;
 
-	public VMenuAdmin(VElegir vElegir, boolean b, Dao dao) {
+	public VMenuAdmin(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
 		this.setModal(b);
 		this.dao = dao;
 		this.vElegir = vElegir;
+		this.cuenta = cuenta;
 
 		setTitle("Retabet.es");
 		String ruta = System.getProperty("user.dir");
@@ -158,35 +161,35 @@ public class VMenuAdmin extends JDialog implements ActionListener {
 
 	private void modificar() {
 		// TODO Auto-generated method stub
-		VModificar vent = new VModificar(vElegir, true, dao);
+		VModificar vent = new VModificar(vElegir, true, dao, cuenta);
 		this.dispose();
 		vent.setVisible(true);
 	}
 
 	private void darBaja() {
 		// TODO Auto-generated method stub
-		VDarBaja vent = new VDarBaja(vElegir, true, dao);
+		VDarBaja vent = new VDarBaja(vElegir, true, dao, cuenta);
 		this.dispose();
 		vent.setVisible(true);
 	}
 
 	private void insertarBDA() {
 		// TODO Auto-generated method stub
-		VInsertarBDA vent = new VInsertarBDA(vElegir, true, dao);
+		VInsertarBDA vent = new VInsertarBDA(vElegir, true, dao, cuenta);
 		this.dispose();
 		vent.setVisible(true);
 	}
 
 	private void gestionarApuestas() {
 		// TODO Auto-generated method stub
-		VGestionarApuestas vent = new VGestionarApuestas(vElegir, true, dao);
+		VGestionarApuestas vent = new VGestionarApuestas(vElegir, true, dao, cuenta);
 		this.dispose();
 		vent.setVisible(true);
 	}
 
 	private void crearApuestas() {
 		// TODO Auto-generated method stub
-		VCrearApuesta vent = new VCrearApuesta(vElegir, true, dao);
+		VElegirApuesta vent = new VElegirApuesta(vElegir, true, dao, cuenta);
 		this.dispose();
 		vent.setVisible(true);
 	}

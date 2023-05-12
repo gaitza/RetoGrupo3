@@ -15,7 +15,7 @@ create table Administrador (
     Salario int not null,
     Fecha_Contratacion date not null,
 	constraint pk_administrador primary key (Cod_Cuenta),
-	constraint fk_administrador foreign key (Cod_Cuenta) references Cuenta(Cod_Cuenta));
+	constraint fk_administrador foreign key (Cod_Cuenta) references Cuenta(Cod_Cuenta) on delete cascade);
     
 #creacion de tabla user
 create table Usuario (
@@ -26,7 +26,7 @@ create table Usuario (
     Pin char(4) not null,
     Saldo float not null,
     constraint pk_usuario primary key (Cod_Cuenta),
-	constraint fk_usuario foreign key (Cod_Cuenta) references Cuenta(Cod_Cuenta));
+	constraint fk_usuario foreign key (Cod_Cuenta) references Cuenta(Cod_Cuenta)  on delete cascade);
 
 #creacion de tabla apuesta
 create table Apuesta (
@@ -101,7 +101,7 @@ create table Jugador (
     on delete cascade);
     
 #creacion de tabla golea
-create table Golea (
+create table Anota (
 	Cod_Partido char(3),
     Id_Jugador char(5),
     constraint pk_golea primary key (Cod_Partido, Id_Jugador),

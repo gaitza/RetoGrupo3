@@ -155,6 +155,48 @@ insert into participar (cod_equipo, cod_comp, cod_dep) values ("039", "003", "00
 insert into participar (cod_equipo, cod_comp, cod_dep) values ("040", "003", "001");
 
 
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("001", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("002", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("003", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("004", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("005", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("006", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("007", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("008", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("009", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("010", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("011", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("012", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("013", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("014", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("015", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("016", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("017", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("018", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("019", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("020", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("021", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("022", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("023", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("024", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("025", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("026", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("027", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("028", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("029", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("030", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("031", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("032", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("033", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("034", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("035", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("036", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("037", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("038", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("039", "001", "001");
+insert into participar (cod_equipo, cod_comp, cod_dep) values ("040", "001", "001");
+
+
 insert into participar (cod_equipo, cod_comp, cod_dep) values ("041", "004", "002");
 insert into participar (cod_equipo, cod_comp, cod_dep) values ("042", "004", "002");
 insert into participar (cod_equipo, cod_comp, cod_dep) values ("043", "004", "002");

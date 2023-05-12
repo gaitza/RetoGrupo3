@@ -27,6 +27,7 @@ import javax.swing.JRadioButton;
 import javax.swing.border.LineBorder;
 
 import clases.Competicion;
+import clases.Cuenta;
 import clases.Deporte;
 import clases.Equipo;
 import clases.Jugador;
@@ -67,13 +68,17 @@ public class VInsertarBDA extends JDialog implements ActionListener{
 	private JLabel lblIntroduceElNombre;
 	private JLabel lblIntroduceElDeporte;
 	private JComboBox comboBox;
+	private JLabel lblDeporte;
+	private JComboBox deportesCombo;
+	private Cuenta cuenta;
 	
-	public VInsertarBDA(VElegir vElegir, boolean b, Dao dao) {
+	public VInsertarBDA(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
 		this.setModal(b);
 		this.dao = dao;
 		this.vElegir = vElegir;
+		this.cuenta = cuenta;
 
 		setTitle("Retabet.es");
 		String ruta = System.getProperty("user.dir");
@@ -179,6 +184,84 @@ public class VInsertarBDA extends JDialog implements ActionListener{
 		grupo.add(equipo);
 		grupo.add(deporte);
 		grupo.add(competicion);
+		
+		panelEquipo = new JPanel();
+		panelEquipo.setBounds(0, 177, 479, 318);
+		contentPanel.add(panelEquipo);
+		panelEquipo.setBackground(Color.DARK_GRAY);
+		panelEquipo.setLayout(null);
+		
+		nombreE = new JTextField();
+		nombreE.setFont(new Font("Arial", Font.PLAIN, 16));
+		nombreE.setColumns(10);
+		nombreE.setBounds(209, 11, 243, 37);
+		panelEquipo.add(nombreE);
+		
+		fechaFun = new JTextField();
+		fechaFun.setFont(new Font("Arial", Font.PLAIN, 16));
+		fechaFun.setColumns(10);
+		fechaFun.setBounds(209, 59, 243, 37);
+		panelEquipo.add(fechaFun);
+		
+		localidad = new JTextField();
+		localidad.setFont(new Font("Arial", Font.PLAIN, 16));
+		localidad.setColumns(10);
+		localidad.setBounds(209, 107, 243, 37);
+		panelEquipo.add(localidad);
+		
+		pais = new JTextField();
+		pais.setFont(new Font("Arial", Font.PLAIN, 16));
+		pais.setColumns(10);
+		pais.setBounds(209, 155, 243, 37);
+		panelEquipo.add(pais);
+		
+		estadio = new JTextField();
+		estadio.setFont(new Font("Arial", Font.PLAIN, 16));
+		estadio.setColumns(10);
+		estadio.setBounds(209, 203, 243, 37);
+		panelEquipo.add(estadio);
+		
+		JLabel lblNombre_1 = new JLabel("Nombre:");
+		lblNombre_1.setForeground(new Color(173, 255, 47));
+		lblNombre_1.setFont(new Font("Arial", Font.BOLD, 16));
+		lblNombre_1.setBounds(10, 11, 189, 37);
+		panelEquipo.add(lblNombre_1);
+		
+		JLabel lblFechaFundacin = new JLabel("Fecha Fundación:");
+		lblFechaFundacin.setForeground(new Color(173, 255, 47));
+		lblFechaFundacin.setFont(new Font("Arial", Font.BOLD, 16));
+		lblFechaFundacin.setBounds(10, 59, 189, 37);
+		panelEquipo.add(lblFechaFundacin);
+		
+		JLabel lblLocalidad = new JLabel("Localidad");
+		lblLocalidad.setForeground(new Color(173, 255, 47));
+		lblLocalidad.setFont(new Font("Arial", Font.BOLD, 16));
+		lblLocalidad.setBounds(10, 107, 189, 37);
+		panelEquipo.add(lblLocalidad);
+		
+		JLabel lblPais = new JLabel("Pais:");
+		lblPais.setForeground(new Color(173, 255, 47));
+		lblPais.setFont(new Font("Arial", Font.BOLD, 16));
+		lblPais.setBounds(10, 155, 189, 37);
+		panelEquipo.add(lblPais);
+		
+		JLabel lblEstadio = new JLabel("Estadio:");
+		lblEstadio.setForeground(new Color(173, 255, 47));
+		lblEstadio.setFont(new Font("Arial", Font.BOLD, 16));
+		lblEstadio.setBounds(10, 203, 189, 37);
+		panelEquipo.add(lblEstadio);
+		
+		lblDeporte = new JLabel("Deporte:");
+		lblDeporte.setForeground(new Color(173, 255, 47));
+		lblDeporte.setFont(new Font("Arial", Font.BOLD, 16));
+		lblDeporte.setBounds(10, 251, 189, 37);
+		panelEquipo.add(lblDeporte);
+		
+		deportesCombo = new JComboBox();
+		deportesCombo.setBounds(209, 251, 243, 37);
+		panelEquipo.add(deportesCombo);
+		
+		panelEquipo.setVisible(false);
 		
 		panelCompeticion = new JPanel();
 		panelCompeticion.setBackground(Color.DARK_GRAY);
@@ -316,72 +399,6 @@ public class VInsertarBDA extends JDialog implements ActionListener{
 		panelJugador.add(lblnoEsNecesario);
 		panelJugador.setVisible(false);
 		
-		panelEquipo = new JPanel();
-		panelEquipo.setBounds(0, 177, 479, 318);
-		contentPanel.add(panelEquipo);
-		panelEquipo.setBackground(Color.DARK_GRAY);
-		panelEquipo.setLayout(null);
-		
-		nombreE = new JTextField();
-		nombreE.setFont(new Font("Arial", Font.PLAIN, 16));
-		nombreE.setColumns(10);
-		nombreE.setBounds(252, 11, 200, 37);
-		panelEquipo.add(nombreE);
-		
-		fechaFun = new JTextField();
-		fechaFun.setFont(new Font("Arial", Font.PLAIN, 16));
-		fechaFun.setColumns(10);
-		fechaFun.setBounds(252, 59, 200, 37);
-		panelEquipo.add(fechaFun);
-		
-		localidad = new JTextField();
-		localidad.setFont(new Font("Arial", Font.PLAIN, 16));
-		localidad.setColumns(10);
-		localidad.setBounds(252, 107, 200, 37);
-		panelEquipo.add(localidad);
-		
-		pais = new JTextField();
-		pais.setFont(new Font("Arial", Font.PLAIN, 16));
-		pais.setColumns(10);
-		pais.setBounds(252, 155, 200, 37);
-		panelEquipo.add(pais);
-		
-		estadio = new JTextField();
-		estadio.setFont(new Font("Arial", Font.PLAIN, 16));
-		estadio.setColumns(10);
-		estadio.setBounds(252, 203, 200, 37);
-		panelEquipo.add(estadio);
-		
-		JLabel lblNombre_1 = new JLabel("Nombre:");
-		lblNombre_1.setForeground(new Color(173, 255, 47));
-		lblNombre_1.setFont(new Font("Arial", Font.BOLD, 16));
-		lblNombre_1.setBounds(10, 11, 232, 37);
-		panelEquipo.add(lblNombre_1);
-		
-		JLabel lblFechaFundacin = new JLabel("Fecha Fundación:");
-		lblFechaFundacin.setForeground(new Color(173, 255, 47));
-		lblFechaFundacin.setFont(new Font("Arial", Font.BOLD, 16));
-		lblFechaFundacin.setBounds(10, 59, 232, 37);
-		panelEquipo.add(lblFechaFundacin);
-		
-		JLabel lblLocalidad = new JLabel("Localidad");
-		lblLocalidad.setForeground(new Color(173, 255, 47));
-		lblLocalidad.setFont(new Font("Arial", Font.BOLD, 16));
-		lblLocalidad.setBounds(10, 107, 232, 37);
-		panelEquipo.add(lblLocalidad);
-		
-		JLabel lblPais = new JLabel("Pais:");
-		lblPais.setForeground(new Color(173, 255, 47));
-		lblPais.setFont(new Font("Arial", Font.BOLD, 16));
-		lblPais.setBounds(10, 155, 232, 37);
-		panelEquipo.add(lblPais);
-		
-		JLabel lblEstadio = new JLabel("Estadio:");
-		lblEstadio.setForeground(new Color(173, 255, 47));
-		lblEstadio.setFont(new Font("Arial", Font.BOLD, 16));
-		lblEstadio.setBounds(10, 203, 232, 37);
-		panelEquipo.add(lblEstadio);
-		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
 		panel_2.setBackground(Color.BLACK);
@@ -389,20 +406,27 @@ public class VInsertarBDA extends JDialog implements ActionListener{
 		contentPanel.add(panel_2);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(ruta+"\\src\\fotos\\Cabecera.jpg"));
 		lblNewLabel_2.setBounds(156, 0, 220, 88);
 		panel_2.add(lblNewLabel_2);
-		
-		panelEquipo.setVisible(false);
 		panelJugador.setVisible(false);
 		panelDeporte.setVisible(false);
 		panelCompeticion.setVisible(false);
 		
 		
 		cargarEquipos();
+		cargarDeportes();
 		
 	}
 
-	
+	private void cargarDeportes() {
+		// TODO Auto-generated method stub
+		List<Deporte> deportes = dao.listadoDeportes();
+		for(Deporte dep : deportes) {
+			deportesCombo.addItem(dep.getCodDep()+"-"+dep.getNombreDep());
+		}
+		deportesCombo.setSelectedIndex(-1);
+	}
 
 	private void cargarEquipos() {
 		// TODO Auto-generated method stub
@@ -459,7 +483,7 @@ public class VInsertarBDA extends JDialog implements ActionListener{
 	private void abrirVantanaNueva() {
 		// TODO Auto-generated method stub
 		this.dispose();
-		VRelacionar vent = new VRelacionar(vElegir, true, dao);
+		VRelacionar vent = new VRelacionar(vElegir, true, dao, cuenta);
 		vent.setVisible(true);
 	}
 
@@ -506,9 +530,19 @@ public class VInsertarBDA extends JDialog implements ActionListener{
 			equipoClase.setLocalidad(localidad.getText());
 			equipoClase.setPais(pais.getText());
 			equipoClase.setEstadio(estadio.getText());
+			String cadena = (String) deportesCombo.getSelectedItem();
+			int pos = cadena.indexOf("-");
+			String nombreDep = cadena.substring(pos+1);
+			equipoClase.setDeporte(nombreDep);
 			
 			if (dao.insertarEquipo(equipoClase)) {
 				JOptionPane.showMessageDialog(this, "EQUIPO INTRODUCIDO CORRECTAMENTE.");
+				nombreE.setText("");
+				fechaFun.setText("");
+				localidad.setText("");
+				pais.setText("");
+				estadio.setText("");
+				deportesCombo.setSelectedIndex(-1);
 			} else {
 				JOptionPane.showMessageDialog(this, "NO SE HA CONSEGUIDO INTRODUCIR CORRECTAMENTE.\\nPOR FAVOR INTENTELO DE NUEVO.");
 			}
@@ -520,6 +554,7 @@ public class VInsertarBDA extends JDialog implements ActionListener{
 			
 			if (dao.insertarDeporte(depClase)) {
 				JOptionPane.showMessageDialog(this, "DEPORTE INTRODUCIDO CORRECTAMENTE.");
+				nombreDep.setText("");
 			} else {
 				JOptionPane.showMessageDialog(this, "NO SE HA CONSEGUIDO INTRODUCIR CORRECTAMENTE.\\nPOR FAVOR INTENTELO DE NUEVO.");
 			}
@@ -532,6 +567,8 @@ public class VInsertarBDA extends JDialog implements ActionListener{
 			
 			if (dao.insertarCompeticion(compClase)) {
 				JOptionPane.showMessageDialog(this, "COMPETICIÓN INTRODUCIDA CORRECTAMENTE.");
+				nombreComp.setText("");
+				deporteC.setText("");
 			} else {
 				JOptionPane.showMessageDialog(this, "NO SE HA CONSEGUIDO INTRODUCIR CORRECTAMENTE.\\nPOR FAVOR INTENTELO DE NUEVO.");
 			}
@@ -542,7 +579,7 @@ public class VInsertarBDA extends JDialog implements ActionListener{
 		// TODO Auto-generated method stub
 		this.setFocusableWindowState(false);
 		this.dispose();
-		VMenuAdmin vent = new VMenuAdmin(vElegir, true, dao);
+		VMenuAdmin vent = new VMenuAdmin(vElegir, true, dao, cuenta);
 		vent.setVisible(true);
 	}
 }

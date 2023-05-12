@@ -103,15 +103,20 @@ public class VElegir extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		VInicioSesion inicioSesion = new VInicioSesion(this, true, dao);
 		VRegistrarse registrar = new VRegistrarse(this, true, dao);
-		VMenuAdmin admin = new VMenuAdmin(this, true, dao);
-		VMenuUser user = new VMenuUser(this, true, dao);
 
 		if (e.getSource().equals(iniciarSesion)) {
 			iniciarSesion(inicioSesion);
+			try {
+				VMenuAdmin admin = new VMenuAdmin(this, true, dao, null);
+				VMenuUser user = new VMenuUser(this, true, dao, null);
 				if ((!admin.isActive() || !user.isActive()) || inicioSesion.isActive()) {
 					if (this.getExtendedState() == ICONIFIED)
 						this.dispose();
 				}
+			} catch (Exception e2) {
+				// TODO: handle exception
+				this.dispose();
+			}
 		}
 		if (e.getSource().equals(registrarse)) {
 			registrarse(registrar);

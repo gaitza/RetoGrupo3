@@ -1,0 +1,32 @@
+package clases;
+
+import java.io.Serializable;
+
+public class Jugar implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	//Declaramos las variables
+	private String codPartido;
+	private String codELocal;
+	private String codEVisit;
+	
+	//Creamos los constructores
+	public Jugar(String codPartido, String codELocal, String codEVisit) {
+		super();
+		this.codPartido = codPartido;
+		this.codELocal = codELocal;
+		this.codEVisit = codEVisit;
+	}
+	
+	public Jugar() {
+		super();
+	}
+	
+	
+	
+
+}

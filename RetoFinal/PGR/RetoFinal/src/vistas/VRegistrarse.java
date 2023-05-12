@@ -266,7 +266,7 @@ public class VRegistrarse extends JDialog implements ActionListener {
 		// TODO Auto-generated method stub
 		String error = "";
 
-		// Controlar que no hay un usuario con es nombre ya introducido
+		// Controlar que no hay un usuario con ese nombre ya introducido
 		String usuario = dao.buscarNombre(nombre.getText());
 		if (!nombre.getText().equalsIgnoreCase("")) {
 			if (nombre.getText().length() > 25 || nombre.getText().length() == 0) {

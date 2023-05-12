@@ -13,6 +13,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import clases.Cuenta;
 import clases.ListadoApuestas;
 import clases.Partido;
 import modelo.Dao;
@@ -32,8 +34,9 @@ public class VPonerResultado extends JDialog implements ActionListener {
 	private JRadioButton rdbtn1;
 	private JRadioButton rdbtnX;
 	private JRadioButton rdbtn2;
+	private Cuenta cuenta;
 
-	public VPonerResultado(VElegir vElegir, boolean b, Dao dao, ListadoApuestas listadoApuestas) {
+	public VPonerResultado(VElegir vElegir, boolean b, Dao dao, ListadoApuestas listadoApuestas, Cuenta cuenta) {
 		super(vElegir);
 		getContentPane().setBackground(new Color(173, 255, 47));
 		setTitle("Retabet.es");
@@ -41,6 +44,7 @@ public class VPonerResultado extends JDialog implements ActionListener {
 		this.dao = dao;
 		this.vElegir = vElegir;
 		this.listadoApuestas = listadoApuestas;
+		this.cuenta = cuenta;
 
 		setTitle("Retabet.es");
 		String ruta = System.getProperty("user.dir");
@@ -164,7 +168,7 @@ public class VPonerResultado extends JDialog implements ActionListener {
 		if(rdbtn1.isSelected()) {
 			partido = new Partido();
 			partido.setResultado("1");
-			if (dao.insertarResultado(partido, listadoApuestas)) {
+			if (dao.insertarResultado(partido, listadoApuestas, cuenta)) {
 				JOptionPane.showMessageDialog(this, "LA GESTION SE HA ACTUALIZADO CORRECTAMENTE.");
 			} else {
 				JOptionPane.showMessageDialog(this, "ERROR EN LA CONFIRMACION.");
@@ -172,7 +176,7 @@ public class VPonerResultado extends JDialog implements ActionListener {
 		} else if(rdbtnX.isSelected()) {
 			partido = new Partido();
 			partido.setResultado("X");
-			if (dao.insertarResultado(partido, listadoApuestas)) {
+			if (dao.insertarResultado(partido, listadoApuestas, cuenta)) {
 				JOptionPane.showMessageDialog(this, "LA GESTION SE HA ACTUALIZADO CORRECTAMENTE.");
 			} else {
 				JOptionPane.showMessageDialog(this, "ERROR EN LA CONFIRMACION.");
@@ -180,7 +184,7 @@ public class VPonerResultado extends JDialog implements ActionListener {
 		} else if(rdbtn2.isSelected()) {
 			partido = new Partido();
 			partido.setResultado("2");
-			if (dao.insertarResultado(partido, listadoApuestas)) {
+			if (dao.insertarResultado(partido, listadoApuestas, cuenta)) {
 				JOptionPane.showMessageDialog(this, "LA GESTION SE HA ACTUALIZADO CORRECTAMENTE.");
 			} else {
 				JOptionPane.showMessageDialog(this, "ERROR EN LA CONFIRMACION.");

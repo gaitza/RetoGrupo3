@@ -1,0 +1,98 @@
+package vistas;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import clases.Cuenta;
+import modelo.Dao;
+
+public class VIngresarDinero extends JDialog implements ActionListener{
+
+	private final JPanel contentPanel = new JPanel();
+	private Dao dao;
+	private VElegir vElegir;
+	private Cuenta cuenta;
+	private JButton volver;
+	private JButton ingresar;
+	
+	public VIngresarDinero(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
+		super(vElegir);
+		setTitle("Retabet.es");
+		this.setModal(b);
+		this.dao = dao;
+		this.vElegir = vElegir;
+		this.cuenta = cuenta;
+
+		String ruta = System.getProperty("user.dir");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ruta + "\\src\\fotos\\Logo.jpg"));
+
+		setBounds(100, 100, 495, 595);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(173, 255, 47));
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		setLocationRelativeTo(null);
+
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBackground(Color.BLACK);
+		panel.setBounds(0, 0, 479, 88);
+		contentPanel.add(panel);
+
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\1dam\\Desktop\\RetoFinal RamaAdrian\\RetoFinal\\PGR\\RetoFinal\\src\\fotos\\Cabecera.jpg"));
+		lblNewLabel.setBounds(156, 0, 220, 88);
+		panel.add(lblNewLabel);
+
+		JPanel panel_1 = new JPanel();
+		panel_1.setLayout(null);
+		panel_1.setBackground(Color.BLACK);
+		panel_1.setBounds(0, 498, 479, 58);
+		contentPanel.add(panel_1);
+
+		volver = new JButton("Volver");
+		volver.setForeground(new Color(173, 255, 47));
+		volver.setFont(new Font("Arial", Font.PLAIN, 14));
+		volver.setFocusable(false);
+		volver.setBorder(null);
+		volver.setBackground(Color.DARK_GRAY);
+		volver.setBounds(48, 11, 107, 36);
+		volver.addActionListener(this);
+		panel_1.add(volver);
+
+		ingresar = new JButton("Ingresar");
+		ingresar.setForeground(new Color(173, 255, 47));
+		ingresar.setFont(new Font("Arial", Font.PLAIN, 14));
+		ingresar.setFocusable(false);
+		ingresar.setBorder(null);
+		ingresar.setBackground(Color.DARK_GRAY);
+		ingresar.setBounds(318, 11, 107, 36);
+		ingresar.addActionListener(this);
+		panel_1.add(ingresar);
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
