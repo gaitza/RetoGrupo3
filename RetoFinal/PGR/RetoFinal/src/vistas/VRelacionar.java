@@ -27,6 +27,10 @@ import modelo.Dao;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VRelacionar extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
@@ -42,6 +46,12 @@ public class VRelacionar extends JDialog implements ActionListener {
 	private List<Equipo> listadoEquipos;
 	private Cuenta cuenta;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param cuenta
+	 */
 	public VRelacionar(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
@@ -231,6 +241,7 @@ public class VRelacionar extends JDialog implements ActionListener {
 		}
 	}
 
+	//Metodo para volver a la anterior Ventana
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.dispose();

@@ -22,6 +22,10 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VPonerResultado extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
@@ -36,6 +40,13 @@ public class VPonerResultado extends JDialog implements ActionListener {
 	private JRadioButton rdbtn2;
 	private Cuenta cuenta;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param listadoApuestas
+	 * @param cuenta
+	 */
 	public VPonerResultado(VElegir vElegir, boolean b, Dao dao, ListadoApuestas listadoApuestas, Cuenta cuenta) {
 		super(vElegir);
 		getContentPane().setBackground(new Color(173, 255, 47));
@@ -141,6 +152,7 @@ public class VPonerResultado extends JDialog implements ActionListener {
 		area.setEditable(false);
 		area.setBounds(58, 124, 368, 165);
 		getContentPane().add(area);
+		
 		//Los espaciados y salto de linea es para que sea mas visual
 		area.append("\n   EQUIPO LOCAL: "+listadoApuestas.geteLocal()+"\n");
 		area.append("   EQUIPO VISITANTE: "+listadoApuestas.geteVisitante()+"\n");

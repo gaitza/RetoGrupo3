@@ -28,6 +28,10 @@ import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.Window;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VInicioSesion extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
@@ -35,20 +39,24 @@ public class VInicioSesion extends JDialog implements ActionListener {
 	private JTextField nombre;
 	private JPasswordField contrasenia;
 	private JButton olvidarContrasenia;
-	private JButton volver;
+	private JButton registrarse;
 	private JButton iniciar;
 	private VElegir vElegir;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 */
 	public VInicioSesion(VElegir vElegir, boolean b, Dao dao) {
 		super(vElegir);
-		
+
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		
+
 		this.setModal(b);
 		this.dao = dao;
 		this.vElegir = vElegir;
-		
-		
+
 		setTitle("Retabet.es");
 		String ruta = System.getProperty("user.dir");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ruta + "\\src\\fotos\\Logo.jpg"));
@@ -59,8 +67,7 @@ public class VInicioSesion extends JDialog implements ActionListener {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);
-		
-		
+
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(Color.BLACK);
@@ -78,15 +85,15 @@ public class VInicioSesion extends JDialog implements ActionListener {
 		panel_1.setBounds(0, 498, 479, 58);
 		contentPanel.add(panel_1);
 
-		volver = new JButton("Volver");
-		volver.setForeground(new Color(173, 255, 47));
-		volver.setFont(new Font("Arial", Font.PLAIN, 14));
-		volver.setFocusable(false);
-		volver.setBorder(null);
-		volver.setBackground(Color.DARK_GRAY);
-		volver.setBounds(54, 11, 107, 36);
-		volver.addActionListener(this);
-		panel_1.add(volver);
+		registrarse = new JButton("Registrate");
+		registrarse.setForeground(new Color(173, 255, 47));
+		registrarse.setFont(new Font("Arial", Font.PLAIN, 14));
+		registrarse.setFocusable(false);
+		registrarse.setBorder(null);
+		registrarse.setBackground(Color.DARK_GRAY);
+		registrarse.setBounds(54, 11, 107, 36);
+		registrarse.addActionListener(this);
+		panel_1.add(registrarse);
 
 		iniciar = new JButton("Iniciar Sesion");
 		iniciar.setForeground(new Color(173, 255, 47));
@@ -138,8 +145,6 @@ public class VInicioSesion extends JDialog implements ActionListener {
 		contentPanel.add(lblNewLabel_1);
 	}
 
-	
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -149,43 +154,53 @@ public class VInicioSesion extends JDialog implements ActionListener {
 		if (e.getSource().equals(iniciar)) {
 			iniciar();
 		}
-		if (e.getSource().equals(volver)) {
-			volver();
+		if (e.getSource().equals(registrarse)) {
+			registrate();
 		}
 	}
 
+	/*
+	 * en caso de haber olvidado la contraseña hemos creado un metodo en el que se
+	 * te pida el email y posteiormente te saldra la contraseña
+	 */
 	private void visualizarContra() {
 		// TODO Auto-generated method stub
 		String nombreC = dao.buscarNombre(nombre.getText());
-		
-		if(nombreC==null) {
-			nombreC="";
+
+		if (nombreC == null) {
+			nombreC = "";
 		}
-		
+
 		if (!nombre.getText().equalsIgnoreCase("") && nombreC.equalsIgnoreCase(nombre.getText())) {
 			String respEmail = JOptionPane.showInputDialog("INTRODUCE EL EMAIL DEL USUARIO.");
 			String email = dao.buscarEmail(respEmail);
-			if(email==null) {
-				email="";
+			if (email == null) {
+				email = "";
 			}
-			
+
 			if (email.equalsIgnoreCase(respEmail)) {
 				String contrasenia = dao.contraOlvidada(respEmail);
 				JOptionPane.showMessageDialog(this, "LA CONTRASEÑA DEL USUARIO ES:\n" + contrasenia);
 			} else {
 				JOptionPane.showMessageDialog(this, "EMAIL MAL INTRODUCIDO");
 			}
-		} else if(nombre.getText().equalsIgnoreCase("")){
+		} else if (nombre.getText().equalsIgnoreCase("")) {
 			JOptionPane.showMessageDialog(this, "INTRODUCE EL NOMBRE DE USUARIO PRIMERO.");
-		} else if(!nombreC.equalsIgnoreCase(nombre.getText())) {
+		} else if (!nombreC.equalsIgnoreCase(nombre.getText())) {
 			JOptionPane.showMessageDialog(this, "ESE USUARIO NO EXISTE.");
 		}
 	}
 
+	// metodo para iniciar sesion
 	private void iniciar() {
 		// TODO Auto-generated method stub
 		Cuenta cuenta = dao.iniciar(nombre.getText(), contrasenia.getText());
 		if (cuenta != null) {
+
+			/*
+			 * pedimos al dao que inicie sesion, en caso de que sea admin se abrira el menu
+			 * de administrador, en cambio si es usuario el menu de usuario
+			 */
 			if (dao.esAdmin(cuenta.getCodCuenta())) {
 				this.dispose();
 				VMenuAdmin vent = new VMenuAdmin(vElegir, true, dao, cuenta);
@@ -200,9 +215,11 @@ public class VInicioSesion extends JDialog implements ActionListener {
 		}
 	}
 
-	private void volver() {
+	// Metodo para volver a la anterior ventana
+	private void registrate() {
 		// TODO Auto-generated method stub
 		this.dispose();
-		vElegir.setExtendedState(Frame.NORMAL);
+		VRegistrarse vent = new VRegistrarse(vElegir, true, dao);
+		vent.setVisible(true);
 	}
 }

@@ -31,6 +31,10 @@ import javax.swing.JCheckBox;
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VEditarPerfil extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
@@ -53,6 +57,12 @@ public class VEditarPerfil extends JDialog implements ActionListener {
 	private JPanel panelContrasenia;
 	private JPanel panelTarjeta;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param cuenta
+	 */
 	public VEditarPerfil(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
@@ -263,6 +273,7 @@ public class VEditarPerfil extends JDialog implements ActionListener {
 
 	}
 
+	// Metodo para editar los datos de la cuenta introducida
 	private void confirmar() {
 		// TODO Auto-generated method stub
 		DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -271,14 +282,16 @@ public class VEditarPerfil extends JDialog implements ActionListener {
 		List<Usuario> usuarios = dao.listarUsuarios();
 
 		if (error == "") {
+
+			// para editar los datos del perfil minimo debes cambiar un campo
 			if (!nombreNuevo.getText().equalsIgnoreCase("") || !nuevaContra.getText().equalsIgnoreCase("")
 					|| !pinNuevo.getText().equalsIgnoreCase("") || !cvvNuevo.getText().equalsIgnoreCase("")
 					|| !tarjetaNueva.getText().equalsIgnoreCase("") || fCNueva.getText().equalsIgnoreCase("")) {
 				editarU = new Usuario();
 				if (!nuevaContra.getText().equalsIgnoreCase("")) {
-					editarU.setContraseña(nuevaContra.getText());
+					editarU.setContrasenia(nuevaContra.getText());
 				} else {
-					editarU.setContraseña(cuenta.getContraseña());
+					editarU.setContrasenia(cuenta.getContrasenia());
 				}
 				if (!nombreNuevo.getText().equalsIgnoreCase("")) {
 					editarU.setNombreCuenta(nombreNuevo.getText());
@@ -307,10 +320,13 @@ public class VEditarPerfil extends JDialog implements ActionListener {
 					JOptionPane.showMessageDialog(this,
 							"SI QUIERES CAMBIAR LA TARJETA DEBES MODIFICAR TODOS SUS CAMPOS.");
 				}
+
+				// Pedimos al dao que edite los datos de la cuenta, en caso de que no se consiga
+				// editar se avisara de ello mediante un JoptionPane
 				if (dao.editarPerfil(cuenta, editarU)) {
 					if (tarjeta.isSelected() || contrasenia.isSelected() || nombre.isSelected()) {
 						JOptionPane.showMessageDialog(this, "PERFIL EDITADO CORRECTAMENTE.");
-						
+
 						nombreNuevo.setText("");
 						nuevaContra.setText("");
 						repetirContra.setText("");
@@ -318,7 +334,7 @@ public class VEditarPerfil extends JDialog implements ActionListener {
 						pinNuevo.setText("");
 						cvvNuevo.setText("");
 						fCNueva.setText("");
-						
+
 					} else {
 						JOptionPane.showMessageDialog(this,
 								"DEBES ESCOGER MINIMO UNA DE LAS TRES OPCIONES Y MODIFICARLA.");
@@ -337,6 +353,7 @@ public class VEditarPerfil extends JDialog implements ActionListener {
 
 	}
 
+	// metodo para controlar los datos introducidos
 	private String controlar(DateTimeFormatter formateador) {
 		// TODO Auto-generated method stub
 		String error = "";
@@ -466,6 +483,7 @@ public class VEditarPerfil extends JDialog implements ActionListener {
 
 	}
 
+	// dependiendo de lo que se quiera editar se hace visible un panel u otro
 	private void opciones() {
 		// TODO Auto-generated method stub
 		if (nombre.isSelected() || contrasenia.isSelected() || tarjeta.isSelected()) {
@@ -498,6 +516,7 @@ public class VEditarPerfil extends JDialog implements ActionListener {
 		}
 	}
 
+	// metodo para volver a la anterior ventana
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.dispose();

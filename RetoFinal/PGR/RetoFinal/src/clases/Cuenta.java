@@ -2,6 +2,10 @@ package clases;
 
 import java.io.Serializable;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class Cuenta implements Serializable {
 
 	/**
@@ -13,17 +17,26 @@ public class Cuenta implements Serializable {
 	private String codCuenta;
 	private String nombreCuenta;
 	private String email;
-	private String Contraseña;
+	private String Contrasenia;
 	
 	//Creamos los constructores
-	public Cuenta(String codCuenta, String nombreCuenta, String email, String contraseña) {
+	/**
+	 * @param codCuenta
+	 * @param nombreCuenta
+	 * @param email
+	 * @param contraseña
+	 */
+	public Cuenta(String codCuenta, String nombreCuenta, String email, String contrasenia) {
 		super();
 		this.codCuenta = codCuenta;
 		this.nombreCuenta = nombreCuenta;
 		this.email = email;
-		Contraseña = contraseña;
+		Contrasenia = contrasenia;
 	}
 	
+	/**
+	 * 
+	 */
 	public Cuenta() {
 		super();
 	}
@@ -31,36 +44,60 @@ public class Cuenta implements Serializable {
 	
 
 	//Creamos los getters y setters
+	/**
+	 * @return
+	 */
 	public String getCodCuenta() {
 		return codCuenta;
 	}
 
+	/**
+	 * @param codCuenta
+	 */
 	public void setCodCuenta(String codCuenta) {
 		this.codCuenta = codCuenta;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getNombreCuenta() {
 		return nombreCuenta;
 	}
 
+	/**
+	 * @param nombreCuenta
+	 */
 	public void setNombreCuenta(String nombreCuenta) {
 		this.nombreCuenta = nombreCuenta;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getEmail() {
 		return email;
 	}
 
+	/**
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public String getContraseña() {
-		return Contraseña;
+	/**
+	 * @return
+	 */
+	public String getContrasenia() {
+		return Contrasenia;
 	}
 
-	public void setContraseña(String contraseña) {
-		Contraseña = contraseña;
+	/**
+	 * @param contraseña
+	 */
+	public void setContrasenia(String contrasenia) {
+		Contrasenia = contrasenia;
 	}
 	
 }

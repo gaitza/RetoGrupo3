@@ -15,6 +15,10 @@ import java.awt.Toolkit;
 import javax.swing.JLabel;
 import java.awt.Font;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VElegir extends JFrame implements ActionListener {
 
 	/**
@@ -26,6 +30,9 @@ public class VElegir extends JFrame implements ActionListener {
 	private JButton registrarse;
 	private Dao dao;
 
+	/**
+	 * @param dao
+	 */
 	public VElegir(Dao dao) {
 
 		String ruta = System.getProperty("user.dir");
@@ -104,8 +111,15 @@ public class VElegir extends JFrame implements ActionListener {
 		VInicioSesion inicioSesion = new VInicioSesion(this, true, dao);
 		VRegistrarse registrar = new VRegistrarse(this, true, dao);
 
+		/*
+		 * si se pulsa el boton de iniciar sesion te envia a la ventana de iniciar
+		 * sesion y en cambio se pulsea el boto de registrarse te envia al de
+		 * registrarse
+		 */
 		if (e.getSource().equals(iniciarSesion)) {
 			iniciarSesion(inicioSesion);
+			// Metodo de que en caso de que se cierre cualquier ventana, la JFrame tambien
+			// se cerrara
 			try {
 				VMenuAdmin admin = new VMenuAdmin(this, true, dao, null);
 				VMenuUser user = new VMenuUser(this, true, dao, null);
@@ -115,6 +129,11 @@ public class VElegir extends JFrame implements ActionListener {
 				}
 			} catch (Exception e2) {
 				// TODO: handle exception
+				if (inicioSesion.isActive()) {
+					if (this.getExtendedState() == ICONIFIED)
+						this.dispose();
+				}
+			} finally {
 				this.dispose();
 			}
 		}
@@ -128,12 +147,14 @@ public class VElegir extends JFrame implements ActionListener {
 
 	}
 
+	// se guarda la JFrame y se abre la ventana de registrarse
 	private void registrarse(VRegistrarse registrar) {
 		// TODO Auto-generated method stub
 		this.setExtendedState(ICONIFIED);
 		registrar.setVisible(true);
 	}
 
+	// se guarda la JFrame y se abre la ventana de iniciar sesion
 	private void iniciarSesion(VInicioSesion inicioSesion) {
 		// TODO Auto-generated method stub
 		this.setExtendedState(ICONIFIED);

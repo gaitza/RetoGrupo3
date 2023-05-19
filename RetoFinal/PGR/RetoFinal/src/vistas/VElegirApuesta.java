@@ -20,6 +20,10 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VElegirApuesta extends JDialog implements ActionListener {
 
 	/**
@@ -35,6 +39,12 @@ public class VElegirApuesta extends JDialog implements ActionListener {
 	private final JPanel contentPanel = new JPanel();
 	private Cuenta cuenta;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param cuenta
+	 */
 	public VElegirApuesta(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
@@ -62,7 +72,7 @@ public class VElegirApuesta extends JDialog implements ActionListener {
 		contentPanel.add(panel);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(ruta+"\\src\\fotos\\Cabecera.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(ruta + "\\src\\fotos\\Cabecera.jpg"));
 		lblNewLabel.setBounds(156, 0, 220, 88);
 		panel.add(lblNewLabel);
 
@@ -81,7 +91,7 @@ public class VElegirApuesta extends JDialog implements ActionListener {
 		btnVolver.setBounds(192, 11, 107, 36);
 		btnVolver.addActionListener(this);
 		panel_1.add(btnVolver);
-		
+
 		btnJugador = new JButton("Jugador");
 		btnJugador.setForeground(new Color(173, 255, 47));
 		btnJugador.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -91,7 +101,7 @@ public class VElegirApuesta extends JDialog implements ActionListener {
 		btnJugador.setBounds(157, 336, 180, 50);
 		btnJugador.addActionListener(this);
 		contentPanel.add(btnJugador);
-		
+
 		btnEquipo = new JButton("Equipo");
 		btnEquipo.setForeground(new Color(173, 255, 47));
 		btnEquipo.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -101,14 +111,13 @@ public class VElegirApuesta extends JDialog implements ActionListener {
 		btnEquipo.setBounds(157, 209, 180, 50);
 		btnEquipo.addActionListener(this);
 		contentPanel.add(btnEquipo);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("PULSA EL TIPO DE APUESTA QUE DESEES");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 20));
 		lblNewLabel_1.setBounds(20, 121, 459, 50);
 		contentPanel.add(lblNewLabel_1);
 
-		
 	}
 
 	@Override
@@ -118,14 +127,15 @@ public class VElegirApuesta extends JDialog implements ActionListener {
 			crearApuestaEquipo();
 		}
 		if (e.getSource().equals(btnJugador)) {
-			crearApuestaJugador();
+
 		}
-		if(e.getSource().equals(btnVolver)) {
+		if (e.getSource().equals(btnVolver)) {
 			volver();
 		}
 
 	}
 
+	// metodo para volver a la anterior ventana
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.dispose();
@@ -133,13 +143,8 @@ public class VElegirApuesta extends JDialog implements ActionListener {
 		vent.setVisible(true);
 	}
 
-	private void crearApuestaJugador() {
-		// TODO Auto-generated method stub
-		this.dispose();
-		VCrearApuestaJugador vent = new VCrearApuestaJugador();
-		vent.setVisible(true);
-	}
-
+	// se te dirige a la ventana de elegir el deporte y la competicion sobre la que
+	// creas la apuesta
 	private void crearApuestaEquipo() {
 		// TODO Auto-generated method stub
 		this.dispose();

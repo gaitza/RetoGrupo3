@@ -23,6 +23,10 @@ import clases.Equipo;
 import clases.Jugador;
 import modelo.Dao;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VEscogerJugador extends JDialog implements ActionListener{
 
 	private final JPanel contentPanel = new JPanel();
@@ -34,6 +38,12 @@ public class VEscogerJugador extends JDialog implements ActionListener{
 	private Equipo equipo;
 
 	
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param equipo
+	 */
 	public VEscogerJugador(VElegir vElegir, boolean b, Dao dao, Equipo equipo) {
 		super(vElegir);
 		setTitle("Retabet.es");
@@ -107,6 +117,7 @@ public class VEscogerJugador extends JDialog implements ActionListener{
 		btnContinuar.addActionListener(this);
 		contentPanel.add(btnContinuar);
 		
+		//cargamos en cada comboBox la informacion de los jugadores
 		cargarJugadores();
 	}
 
@@ -134,6 +145,7 @@ public class VEscogerJugador extends JDialog implements ActionListener{
 	}
 
 
+	//Metodo para eliminar un jugador
 	private void confirmar() {
 		// TODO Auto-generated method stub
 		Jugador jug;
@@ -145,6 +157,7 @@ public class VEscogerJugador extends JDialog implements ActionListener{
 			String id = cadena.substring(0, pos);
 			jug.setId(id);
 			
+			//Pedimos al dao que elimine el jugador, en caso de que no se consiga eliminar se avisara de ello mediante un JoptionPane
 			if (dao.bajaJugador(jug)) {
 				JOptionPane.showMessageDialog(this, "JUGADOR ELIMINADO CORRECTAMENTE.");
 				escogerJugador.setSelectedIndex(-1);
@@ -157,6 +170,7 @@ public class VEscogerJugador extends JDialog implements ActionListener{
 	}
 
 
+	//cerramos la ventana
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.dispose();

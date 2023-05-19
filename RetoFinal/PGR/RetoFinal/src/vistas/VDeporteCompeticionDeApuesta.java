@@ -27,6 +27,10 @@ import clases.Equipo;
 import clases.Partido;
 import modelo.Dao;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VDeporteCompeticionDeApuesta extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
@@ -38,6 +42,12 @@ public class VDeporteCompeticionDeApuesta extends JDialog implements ActionListe
 	private VElegir vElegir;
 	private Cuenta cuenta;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param cuenta
+	 */
 	public VDeporteCompeticionDeApuesta(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
@@ -99,10 +109,10 @@ public class VDeporteCompeticionDeApuesta extends JDialog implements ActionListe
 		deportesCombo.setForeground(new Color(173, 255, 47));
 		deportesCombo.setFont(new Font("Arial", Font.PLAIN, 16));
 		deportesCombo.setBackground(Color.DARK_GRAY);
-		deportesCombo.setBounds(68, 219, 343, 40);
+		deportesCombo.setBounds(33, 219, 407, 40);
 		contentPanel.add(deportesCombo);
 
-		JLabel lblEligeElDeporte = new JLabel("Elige el deporte sobre el que quieres realizar la apuesta:");
+		JLabel lblEligeElDeporte = new JLabel("Elige el deporte sobre el que quieres crear la apuesta:");
 		lblEligeElDeporte.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEligeElDeporte.setFont(new Font("Arial", Font.BOLD, 16));
 		lblEligeElDeporte.setBounds(10, 154, 459, 45);
@@ -113,15 +123,16 @@ public class VDeporteCompeticionDeApuesta extends JDialog implements ActionListe
 		competicionesCombo.setForeground(new Color(173, 255, 47));
 		competicionesCombo.setFont(new Font("Arial", Font.PLAIN, 16));
 		competicionesCombo.setBackground(Color.DARK_GRAY);
-		competicionesCombo.setBounds(68, 347, 343, 40);
+		competicionesCombo.setBounds(33, 347, 407, 40);
 		contentPanel.add(competicionesCombo);
 
-		JLabel lblEligeLaCompeticion = new JLabel("Elige la competición sobre el que quieres realizar la apuesta:");
+		JLabel lblEligeLaCompeticion = new JLabel("Elige la competición sobre el que quieres crear la apuesta:");
 		lblEligeLaCompeticion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEligeLaCompeticion.setFont(new Font("Arial", Font.BOLD, 15));
 		lblEligeLaCompeticion.setBounds(10, 282, 459, 45);
 		contentPanel.add(lblEligeLaCompeticion);
 
+		// cargamos en cada comboBox la informacion necesaria
 		cargarDeportes();
 		cargaCompeticiones();
 
@@ -156,38 +167,44 @@ public class VDeporteCompeticionDeApuesta extends JDialog implements ActionListe
 		}
 	}
 
+	// Metodo para escoger el deporte y la competicion sobre la que deseas crear la
+	// apuesta (para acceder a la siguiente ventana la competicion debe ser sobre el mismo deporte al deporte seleccionado)
 	private void continuar() {
 		// TODO Auto-generated method stub
-		Deporte deportes = new Deporte();
-		String cadenaDeporte = (String) deportesCombo.getSelectedItem();
-		int posDep = cadenaDeporte.indexOf("-");
-		String codDeporte = cadenaDeporte.substring(0, posDep);
-		String nombreDep = cadenaDeporte.substring(posDep+1);
-		deportes.setCodDep(codDeporte);
-		deportes.setNombreDep(nombreDep);
-		
-		
-		Competicion competiciones = new Competicion();
-		String cadenaCompeticion = (String) competicionesCombo.getSelectedItem();
-		int posComp = cadenaCompeticion.indexOf("-");
-		int posComp2 = cadenaCompeticion.indexOf("|");
-		String codComp = cadenaCompeticion.substring(0, posComp);
-		String nombreComp = cadenaCompeticion.substring(posComp+1, posComp2);
-		String deporteComp = cadenaCompeticion.substring(posComp2+1);
-		competiciones.setCodCompeticion(codComp);
-		competiciones.setNombre(nombreComp);
-		competiciones.setDeporte(deporteComp);
-		
-		if(nombreDep.equalsIgnoreCase(deporteComp)) {
-			this.dispose();
-			VCrearApuestaEquipo vent = new VCrearApuestaEquipo(vElegir, true, dao, deportes, competiciones, cuenta);
-			vent.setVisible(true);
+		if (deportesCombo.getSelectedIndex() != -1 && competicionesCombo.getSelectedIndex() != -1) {
+			Deporte deportes = new Deporte();
+			String cadenaDeporte = (String) deportesCombo.getSelectedItem();
+			int posDep = cadenaDeporte.indexOf("-");
+			String codDeporte = cadenaDeporte.substring(0, posDep);
+			String nombreDep = cadenaDeporte.substring(posDep + 1);
+			deportes.setCodDep(codDeporte);
+			deportes.setNombreDep(nombreDep);
+
+			Competicion competiciones = new Competicion();
+			String cadenaCompeticion = (String) competicionesCombo.getSelectedItem();
+			int posComp = cadenaCompeticion.indexOf("-");
+			int posComp2 = cadenaCompeticion.indexOf("|");
+			String codComp = cadenaCompeticion.substring(0, posComp);
+			String nombreComp = cadenaCompeticion.substring(posComp + 1, posComp2);
+			String deporteComp = cadenaCompeticion.substring(posComp2 + 1);
+			competiciones.setCodCompeticion(codComp);
+			competiciones.setNombre(nombreComp);
+			competiciones.setDeporte(deporteComp);
+
+			if (nombreDep.equalsIgnoreCase(deporteComp)) {
+				this.dispose();
+				VCrearApuestaEquipo vent = new VCrearApuestaEquipo(vElegir, true, dao, deportes, competiciones, cuenta);
+				vent.setVisible(true);
+			} else {
+				JOptionPane.showMessageDialog(this, "LAS DOS OPCIONES DEBEN SER SOBRE EL MISMO DEPORTE.");
+			}
 		} else {
-			JOptionPane.showMessageDialog(this, "LAS DOS OPCIONES DEBEN SER SOBRE EL MISMO DEPORTE.");
+			JOptionPane.showMessageDialog(this, "DEBES RELLENAR LAS DOS OPCIONES.");
 		}
-		
+
 	}
 
+	// metodo para volver a la anterior ventana
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.dispose();

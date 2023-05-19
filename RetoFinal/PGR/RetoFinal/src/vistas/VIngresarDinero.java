@@ -30,6 +30,10 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VIngresarDinero extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
@@ -45,6 +49,12 @@ public class VIngresarDinero extends JDialog implements ActionListener {
 	private JPasswordField pin;
 	private List<Usuario> usuarios;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param cuenta
+	 */
 	public VIngresarDinero(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
@@ -134,6 +144,10 @@ public class VIngresarDinero extends JDialog implements ActionListener {
 		contentPanel.add(lblNewLabel_2);
 
 		ingreso = new JTextField();
+		/*
+		 * añadimos un evento en el que si el ingreso que se quiere realizar es mayor a
+		 * 20 se hace visible el apartado de pin
+		 */
 		ingreso.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -187,16 +201,22 @@ public class VIngresarDinero extends JDialog implements ActionListener {
 		lblNewLabel_2.setVisible(false);
 		lblNewLabel_1_4.setVisible(false);
 		pin.setVisible(false);
-		
+
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(Color.DARK_GRAY);
 		panel_3.setBounds(0, 85, 479, 29);
 		contentPanel.add(panel_3);
 		panel_3.setLayout(null);
 
+		// metodo para que se muestre en pantalla el nombre de usuario y el dinero que
+		// tiene la cuenta
 		for (Usuario usuario : usuarios) {
+			/*
+			 * a medida que se va recorriendo el for, en caso de que codigo del usuario
+			 * concuerden con el de la cuenta se guarda el nombre y el saldo de ella misma
+			 */
 			if (usuario.getCodCuenta().equals(cuenta.getCodCuenta())) {
-				JLabel lblNombreC = new JLabel("Cuenta: "+cuenta.getNombreCuenta());
+				JLabel lblNombreC = new JLabel("Cuenta: " + cuenta.getNombreCuenta());
 				lblNombreC.setHorizontalAlignment(SwingConstants.LEFT);
 				lblNombreC.setFont(new Font("Arial", Font.BOLD, 12));
 				lblNombreC.setForeground(new Color(173, 255, 47));
@@ -224,6 +244,7 @@ public class VIngresarDinero extends JDialog implements ActionListener {
 		}
 	}
 
+	// metodo para ingresar dinero en la cuenta
 	private void ingresar() {
 		// TODO Auto-generated method stub
 		DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -236,11 +257,18 @@ public class VIngresarDinero extends JDialog implements ActionListener {
 					&& pin.isVisible()) {
 
 				for (Usuario usuario : usuarios) {
+					/*
+					 * buscamos el usuario al que hay que introducirle el dinero, para ello deben
+					 * coincidir todos los datos introducidos con la base de datos
+					 */
 					if (usuario.getCodCuenta().equals(cuenta.getCodCuenta())
 							&& usuario.getnTarjeta() == Long.parseLong(tarjeta.getText())
-							&& usuario.getFechaCaducidad().equals(LocalDate.parse("01/" + fCaducidad.getText(), formateador))
+							&& usuario.getFechaCaducidad()
+									.equals(LocalDate.parse("01/" + fCaducidad.getText(), formateador))
 							&& usuario.getCvv().equals(cvv.getText()) && usuario.getPin().equals(pin.getText())) {
-						
+
+						// Pedimos al dao que ingrese el dinero en la cuenta, en caso de que no se
+						// consiga ingresar se avisara de ello mediante un JoptionPane
 						if (dao.ingresarDinero(cuenta, ingreso.getText())) {
 							JOptionPane.showMessageDialog(this, "INGRESO HECHO CORRECTAMENTE.");
 							ingreso.setText("");
@@ -248,7 +276,7 @@ public class VIngresarDinero extends JDialog implements ActionListener {
 							pin.setText("");
 							cvv.setText("");
 							fCaducidad.setText("");
-							
+
 							tarjeta.setBackground(Color.WHITE);
 							pin.setBackground(Color.WHITE);
 							cvv.setBackground(Color.WHITE);
@@ -257,10 +285,9 @@ public class VIngresarDinero extends JDialog implements ActionListener {
 							JOptionPane.showMessageDialog(this,
 									"NO SE HA CONSEGUIDO INGRESAR CORRECTAMENTE.\nPOR FAVOR INTENTELO DE NUEVO.");
 						}
-						
+
 					} else {
-						JOptionPane.showMessageDialog(this,
-								"LOS DATOS NO COINCIDEN CON LO REGISTRADO EN SU CUENTA.");
+						JOptionPane.showMessageDialog(this, "LOS DATOS NO COINCIDEN CON LO REGISTRADO EN SU CUENTA.");
 					}
 				}
 
@@ -268,9 +295,10 @@ public class VIngresarDinero extends JDialog implements ActionListener {
 				for (Usuario usuario : usuarios) {
 					if (usuario.getCodCuenta().equals(cuenta.getCodCuenta())
 							&& usuario.getnTarjeta() == Long.parseLong(tarjeta.getText())
-							&& usuario.getFechaCaducidad().equals(LocalDate.parse("01/" + fCaducidad.getText(), formateador))
+							&& usuario.getFechaCaducidad()
+									.equals(LocalDate.parse("01/" + fCaducidad.getText(), formateador))
 							&& usuario.getCvv().equals(cvv.getText())) {
-						
+
 						if (dao.ingresarDinero(cuenta, ingreso.getText())) {
 							JOptionPane.showMessageDialog(this, "INGRESO HECHO CORRECTAMENTE.");
 							ingreso.setText("");
@@ -278,12 +306,12 @@ public class VIngresarDinero extends JDialog implements ActionListener {
 							pin.setText("");
 							cvv.setText("");
 							fCaducidad.setText("");
-							
+
 							tarjeta.setBackground(Color.WHITE);
 							pin.setBackground(Color.WHITE);
 							cvv.setBackground(Color.WHITE);
 							fCaducidad.setBackground(Color.WHITE);
-							
+
 						} else {
 							JOptionPane.showMessageDialog(this,
 									"NO SE HA CONSEGUIDO INGRESAR CORRECTAMENTE.\nPOR FAVOR INTENTELO DE NUEVO.");
@@ -292,10 +320,9 @@ public class VIngresarDinero extends JDialog implements ActionListener {
 							cvv.setBackground(Color.WHITE);
 							fCaducidad.setBackground(Color.WHITE);
 						}
-						 
+
 					} else {
-						JOptionPane.showMessageDialog(this,
-								"LOS DATOS NO COINCIDEN CON LO REGISTRADO EN SU CUENTA.");
+						JOptionPane.showMessageDialog(this, "LOS DATOS NO COINCIDEN CON LO REGISTRADO EN SU CUENTA.");
 					}
 				}
 			} else {
@@ -307,6 +334,11 @@ public class VIngresarDinero extends JDialog implements ActionListener {
 		}
 	}
 
+	//Metodo para controlar los datos introducidos
+	/**
+	 * @param formateador
+	 * @return
+	 */
 	private String controlar(DateTimeFormatter formateador) {
 		// TODO Auto-generated method stub
 		String error = "";
@@ -386,6 +418,7 @@ public class VIngresarDinero extends JDialog implements ActionListener {
 		return error;
 	}
 
+	// Metodo para volver a la anterior ventana
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.dispose();

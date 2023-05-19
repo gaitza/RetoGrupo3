@@ -20,6 +20,10 @@ import javax.swing.border.EmptyBorder;
 import clases.Cuenta;
 import modelo.Dao;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VMenuAdmin extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
@@ -33,6 +37,12 @@ public class VMenuAdmin extends JDialog implements ActionListener {
 	private JButton modificar;
 	private Cuenta cuenta;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param cuenta
+	 */
 	public VMenuAdmin(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
@@ -139,6 +149,9 @@ public class VMenuAdmin extends JDialog implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+
+		// Depende del boton pulsado se abrira la ventana en la que se realizara el
+		// metedo escogido
 		if (e.getSource().equals(sesionOf)) {
 			cerrarSesion();
 		}
@@ -194,10 +207,12 @@ public class VMenuAdmin extends JDialog implements ActionListener {
 		vent.setVisible(true);
 	}
 
+	//metodo para cerrar sesion, se enviara a la apanalla de iniciar sesion
 	private void cerrarSesion() {
 		// TODO Auto-generated method stub
 		this.dispose();
-		vElegir.setExtendedState(Frame.NORMAL);
+		VInicioSesion vent = new VInicioSesion(vElegir, true, dao);
+		vent.setVisible(true);
 	}
 
 }

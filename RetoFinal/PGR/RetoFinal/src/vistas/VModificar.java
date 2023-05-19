@@ -36,6 +36,10 @@ import clases.Deporte;
 import clases.Equipo;
 import modelo.Dao;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VModificar extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
@@ -68,6 +72,12 @@ public class VModificar extends JDialog implements ActionListener {
 	private JComboBox deporteC;
 	private Cuenta cuenta;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param cuenta
+	 */
 	public VModificar(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
@@ -170,56 +180,56 @@ public class VModificar extends JDialog implements ActionListener {
 		grupo.add(equipo);
 		grupo.add(deporte);
 		grupo.add(competicion);
-		
-				panelCompeticion = new JPanel();
-				panelCompeticion.setBackground(new Color(173, 255, 47));
-				panelCompeticion.setBounds(0, 177, 479, 321);
-				contentPanel.add(panelCompeticion);
-				panelCompeticion.setLayout(null);
-				
-						nombreComp = new JTextField();
-						nombreComp.setFont(new Font("Arial", Font.PLAIN, 16));
-						nombreComp.setColumns(10);
-						nombreComp.setBounds(141, 163, 200, 37);
-						panelCompeticion.add(nombreComp);
-						
-								lblIntroduceElNombre = new JLabel(
-										"<html>Introduce el nombre nuevo de la competición: (en caso de querer modificarlo)</html>");
-								lblIntroduceElNombre.setHorizontalAlignment(SwingConstants.CENTER);
-								lblIntroduceElNombre.setForeground(Color.DARK_GRAY);
-								lblIntroduceElNombre.setFont(new Font("Arial", Font.BOLD, 16));
-								lblIntroduceElNombre.setBounds(59, 112, 355, 40);
-								panelCompeticion.add(lblIntroduceElNombre);
-								
-										lblIntroduceElDeporte = new JLabel(
-												"<html>Introduce el deporte nuevo al que pertenece la competición: (en caso de querer modificarlo)</html>");
-										lblIntroduceElDeporte.setHorizontalAlignment(SwingConstants.CENTER);
-										lblIntroduceElDeporte.setForeground(Color.DARK_GRAY);
-										lblIntroduceElDeporte.setFont(new Font("Arial", Font.BOLD, 16));
-										lblIntroduceElDeporte.setBounds(59, 222, 361, 40);
-										panelCompeticion.add(lblIntroduceElDeporte);
-										
-												competicionesCombo = new JComboBox();
-												competicionesCombo.setForeground(new Color(173, 255, 47));
-												competicionesCombo.setFont(new Font("Arial", Font.PLAIN, 16));
-												competicionesCombo.setBackground(Color.DARK_GRAY);
-												competicionesCombo.setBounds(84, 48, 305, 38);
-												panelCompeticion.add(competicionesCombo);
-												
-														JLabel lblEscogeLaCompeticion = new JLabel("Escoge la competición que quieras modificar:");
-														lblEscogeLaCompeticion.setHorizontalAlignment(SwingConstants.CENTER);
-														lblEscogeLaCompeticion.setForeground(Color.DARK_GRAY);
-														lblEscogeLaCompeticion.setFont(new Font("Arial", Font.BOLD, 16));
-														lblEscogeLaCompeticion.setBounds(10, 11, 459, 40);
-														panelCompeticion.add(lblEscogeLaCompeticion);
-														
-																deporteC = new JComboBox();
-																deporteC.setBackground(Color.DARK_GRAY);
-																deporteC.setForeground(new Color(173, 255, 47));
-																deporteC.setFont(new Font("Arial", Font.PLAIN, 16));
-																deporteC.setBounds(84, 273, 305, 37);
-																panelCompeticion.add(deporteC);
-																panelCompeticion.setVisible(false);
+
+		panelCompeticion = new JPanel();
+		panelCompeticion.setBackground(new Color(173, 255, 47));
+		panelCompeticion.setBounds(0, 177, 479, 321);
+		contentPanel.add(panelCompeticion);
+		panelCompeticion.setLayout(null);
+
+		nombreComp = new JTextField();
+		nombreComp.setFont(new Font("Arial", Font.PLAIN, 16));
+		nombreComp.setColumns(10);
+		nombreComp.setBounds(141, 163, 200, 37);
+		panelCompeticion.add(nombreComp);
+
+		lblIntroduceElNombre = new JLabel(
+				"<html>Introduce el nombre nuevo de la competición: (en caso de querer modificarlo)</html>");
+		lblIntroduceElNombre.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIntroduceElNombre.setForeground(Color.DARK_GRAY);
+		lblIntroduceElNombre.setFont(new Font("Arial", Font.BOLD, 16));
+		lblIntroduceElNombre.setBounds(59, 112, 355, 40);
+		panelCompeticion.add(lblIntroduceElNombre);
+
+		lblIntroduceElDeporte = new JLabel(
+				"<html>Introduce el deporte nuevo al que pertenece la competición: (en caso de querer modificarlo)</html>");
+		lblIntroduceElDeporte.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIntroduceElDeporte.setForeground(Color.DARK_GRAY);
+		lblIntroduceElDeporte.setFont(new Font("Arial", Font.BOLD, 16));
+		lblIntroduceElDeporte.setBounds(59, 222, 361, 40);
+		panelCompeticion.add(lblIntroduceElDeporte);
+
+		competicionesCombo = new JComboBox();
+		competicionesCombo.setForeground(new Color(173, 255, 47));
+		competicionesCombo.setFont(new Font("Arial", Font.PLAIN, 16));
+		competicionesCombo.setBackground(Color.DARK_GRAY);
+		competicionesCombo.setBounds(84, 48, 305, 38);
+		panelCompeticion.add(competicionesCombo);
+
+		JLabel lblEscogeLaCompeticion = new JLabel("Escoge la competición que quieras modificar:");
+		lblEscogeLaCompeticion.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEscogeLaCompeticion.setForeground(Color.DARK_GRAY);
+		lblEscogeLaCompeticion.setFont(new Font("Arial", Font.BOLD, 16));
+		lblEscogeLaCompeticion.setBounds(10, 11, 459, 40);
+		panelCompeticion.add(lblEscogeLaCompeticion);
+
+		deporteC = new JComboBox();
+		deporteC.setBackground(Color.DARK_GRAY);
+		deporteC.setForeground(new Color(173, 255, 47));
+		deporteC.setFont(new Font("Arial", Font.PLAIN, 16));
+		deporteC.setBounds(84, 273, 305, 37);
+		panelCompeticion.add(deporteC);
+		panelCompeticion.setVisible(false);
 
 		panelEquipo = new JPanel();
 		panelEquipo.setBounds(0, 177, 479, 318);
@@ -352,9 +362,13 @@ public class VModificar extends JDialog implements ActionListener {
 		panel_2.add(lblNewLabel_2);
 		panelJugador.setVisible(false);
 
+		// Guardamos todas los Equipos
 		List<Equipo> equipos = dao.listadoEquipos();
+
+		// Creamos la tabla con los Equipos guardados recientemente
 		presentarTabla(equipos);
 
+		// cargamos en cada comboBox la informacion necesaria
 		cargarEquipos();
 		cargarDeportes();
 		cargarCompeticiones();
@@ -390,6 +404,9 @@ public class VModificar extends JDialog implements ActionListener {
 		equiposCombo.setSelectedIndex(-1);
 	}
 
+	/**
+	 * @param equipos
+	 */
 	public void presentarTabla(List<Equipo> equipos) {
 		JScrollPane scroll = new JScrollPane();
 		scroll.setLocation(10, 310);
@@ -420,6 +437,10 @@ public class VModificar extends JDialog implements ActionListener {
 		scroll.setBounds(10, 50, 459, 257);
 	}
 
+	/**
+	 * @param equipos
+	 * @return
+	 */
 	private JTable cargarTabla(List<Equipo> equipos) {
 		// TODO Auto-generated method stub
 		String[] cabeceras = { "NOMBRE", "AÑO F.", "LOCALIDAD", "PAIS", "ESTADIO", "DEPORTE" };
@@ -444,6 +465,8 @@ public class VModificar extends JDialog implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+
+		// dependiendo de lo que se quiera dar de baja se hace visible un panel u otro
 		if (jugador.isSelected()) {
 			panelJugador.setVisible(true);
 			panelEquipo.setVisible(false);
@@ -485,9 +508,15 @@ public class VModificar extends JDialog implements ActionListener {
 		Deporte depClase;
 		Competicion compClase;
 
+		/*
+		 * Dependiendo del rdbtn seleccionado se envia al dao lo que se quiere
+		 * modificar, en caso de que no se consiga eliminar se avisara de ello mediante
+		 * un JoptionPane
+		 */
 		if (equipo.isSelected()) {
 			if (equiposCombo.getSelectedIndex() != -1) {
-				if (!nombreE.getText().equalsIgnoreCase("") || !localidad.getText().equalsIgnoreCase("") || !pais.getText().equalsIgnoreCase("") || !estadio.getText().equalsIgnoreCase("")) {
+				if (!nombreE.getText().equalsIgnoreCase("") || !localidad.getText().equalsIgnoreCase("")
+						|| !pais.getText().equalsIgnoreCase("") || !estadio.getText().equalsIgnoreCase("")) {
 					equipoClase = new Equipo();
 					String cadena = (String) equiposCombo.getSelectedItem();
 					int pos = cadena.indexOf("-");
@@ -510,8 +539,7 @@ public class VModificar extends JDialog implements ActionListener {
 								"NO SE HA CONSEGUIDO MODIFICAR CORRECTAMENTE.\nPOR FAVOR INTENTELO DE NUEVO.");
 					}
 				} else {
-					JOptionPane.showMessageDialog(this,
-							"DEBES RELLENAR AL MENOS UN CAMPO");
+					JOptionPane.showMessageDialog(this, "DEBES RELLENAR AL MENOS UN CAMPO");
 				}
 
 			} else {
@@ -548,12 +576,12 @@ public class VModificar extends JDialog implements ActionListener {
 				int pos = cadena.indexOf("-");
 				String cod = cadena.substring(0, pos);
 				compClase.setCodCompeticion(cod);
-				
+
 				compClase.setNombre(nombreComp.getText());
-				
+
 				String cadena2 = (String) deporteC.getSelectedItem();
 				int pos2 = cadena2.indexOf("-");
-				String deporte = cadena2.substring(pos2+1);
+				String deporte = cadena2.substring(pos2 + 1);
 				compClase.setDeporte(deporte);
 
 				if (dao.modificarCompeticion(compClase)) {
@@ -571,6 +599,7 @@ public class VModificar extends JDialog implements ActionListener {
 		}
 	}
 
+	// Metodo para volver a la anterior ventana
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.setFocusableWindowState(false);

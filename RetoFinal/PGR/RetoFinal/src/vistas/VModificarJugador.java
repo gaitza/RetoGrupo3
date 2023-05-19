@@ -23,6 +23,10 @@ import clases.Equipo;
 import clases.Jugador;
 import modelo.Dao;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VModificarJugador extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
@@ -35,6 +39,12 @@ public class VModificarJugador extends JDialog implements ActionListener {
 	private JComboBox equipoNuevo;
 	private Equipo equipo;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param equipo
+	 */
 	public VModificarJugador(VElegir vElegir, boolean b, Dao dao, Equipo equipo) {
 		super(vElegir);
 		setTitle("Retabet.es");
@@ -138,6 +148,7 @@ public class VModificarJugador extends JDialog implements ActionListener {
 		equipoNuevo.setBounds(91, 390, 298, 35);
 		contentPanel.add(equipoNuevo);
 
+		// cargamos en cada comboBox la informacion necesaria
 		cargarJugadores();
 		cargarEquipos();
 		cargarDorsales();
@@ -183,11 +194,13 @@ public class VModificarJugador extends JDialog implements ActionListener {
 		}
 	}
 
+	//cerramos la ventana
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.dispose();
 	}
 
+	//metodo para modificar el jugador seleccionado
 	private void continuar() {
 		// TODO Auto-generated method stub
 		Jugador jug;
@@ -210,12 +223,12 @@ public class VModificarJugador extends JDialog implements ActionListener {
 				String cadena2 = (String) equipoNuevo.getSelectedItem();
 				int pos2 = cadena2.indexOf("-");
 				String codEquipo = cadena2.substring(0, pos2);
-				System.out.println(codEquipo);
 				jug.setCodEquipo(codEquipo);
 			} else {
 				jug.setCodEquipo("000");
 			}
 
+			//le pedimos al dao que modifique el jugador, encaso de que se consiga modificar correctamente se le avisara de ello
 			if (dao.modificarJugador(jug, equipo)) {
 				JOptionPane.showMessageDialog(this, "JUGADOR MODIFICADO CORRECTAMENTE.");
 				this.dispose();

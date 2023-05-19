@@ -32,6 +32,10 @@ import java.awt.Dialog.ModalityType;
 import java.awt.Window.Type;
 import javax.swing.JFormattedTextField;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VRegistrarse extends JDialog implements ActionListener {
 
 	/**
@@ -52,6 +56,11 @@ public class VRegistrarse extends JDialog implements ActionListener {
 	private Dao dao;
 	private VElegir vElegir;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 */
 	public VRegistrarse(VElegir vElegir, boolean b, Dao dao) {
 		super(vElegir);
 
@@ -241,7 +250,7 @@ public class VRegistrarse extends JDialog implements ActionListener {
 			user = new Usuario();
 			user.setNombreCuenta(nombre.getText());
 			user.setEmail(email.getText());
-			user.setContraseña(contrasenia.getText());
+			user.setContrasenia(contrasenia.getText());
 			user.setnTarjeta(Long.parseLong(nTarjeta.getText()));
 			user.setFechaCaducidad(LocalDate.parse("01/" + fCaducidad.getText(), formateador));
 			user.setCvv(cvv.getText());
@@ -254,7 +263,7 @@ public class VRegistrarse extends JDialog implements ActionListener {
 				VInicioSesion vent = new VInicioSesion(vElegir, true, dao);
 				vent.setVisible(true);
 			} else {
-				JOptionPane.showMessageDialog(this, error);
+				JOptionPane.showMessageDialog(this, "LA CUENTA NO SE HA CREADO CORRECTAMENTE");
 			}
 		} else {
 			JOptionPane.showMessageDialog(this, error);
@@ -262,6 +271,10 @@ public class VRegistrarse extends JDialog implements ActionListener {
 
 	}
 
+	/**
+	 * @param formateador
+	 * @return
+	 */
 	private String controlar(DateTimeFormatter formateador) {
 		// TODO Auto-generated method stub
 		String error = "";
@@ -407,6 +420,7 @@ public class VRegistrarse extends JDialog implements ActionListener {
 		}
 	}
 
+	//Metodo para volver a la anterior ventana
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.dispose();

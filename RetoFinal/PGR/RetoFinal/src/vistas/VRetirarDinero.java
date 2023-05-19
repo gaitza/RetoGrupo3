@@ -29,6 +29,10 @@ import clases.Cuenta;
 import clases.Usuario;
 import modelo.Dao;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VRetirarDinero extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
@@ -41,6 +45,12 @@ public class VRetirarDinero extends JDialog implements ActionListener {
 	private JTextField tarjeta;
 	private List<Usuario> usuarios;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param cuenta
+	 */
 	public VRetirarDinero(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
@@ -215,6 +225,10 @@ public class VRetirarDinero extends JDialog implements ActionListener {
 		}
 	}
 
+	/**
+	 * @param formateador
+	 * @return
+	 */
 	private String controlar(DateTimeFormatter formateador) {
 		// TODO Auto-generated method stub
 		String error = "";
@@ -247,6 +261,7 @@ public class VRetirarDinero extends JDialog implements ActionListener {
 		return error;
 	}
 
+	//Metodo para volver a la anterior ventana
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.dispose();

@@ -34,6 +34,10 @@ import java.util.List;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VCrearApuestaEquipo extends JDialog implements ActionListener {
 
 	/**
@@ -54,6 +58,14 @@ public class VCrearApuestaEquipo extends JDialog implements ActionListener {
 	private JTextField cuota;
 	private Cuenta cuenta;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param deportes
+	 * @param competiciones
+	 * @param cuenta
+	 */
 	public VCrearApuestaEquipo(VElegir vElegir, boolean b, Dao dao, Deporte deportes, Competicion competiciones, Cuenta cuenta) {
 		super(vElegir);
 		setTitle("Retabet.es");
@@ -165,13 +177,14 @@ public class VCrearApuestaEquipo extends JDialog implements ActionListener {
 		cuota.setBounds(246, 401, 192, 36);
 		contentPanel.add(cuota);
 
+		//cargamos en cada comboBox la informacion de los equipos
 		cargarEquipoLocal();
 		cargarEquipoVisitante();
 	}
 
 	private void cargarEquipoVisitante() {
 		// TODO Auto-generated method stub
-		List<Equipo> equipos = dao.listarEquiposPorDeporte(deportes, competiciones);
+		List<Equipo> equipos = dao.listarEquiposPorDeporteYCompeticion(deportes, competiciones);
 		for (Equipo equipo : equipos) {
 			cBVisitante.addItem(equipo.getCodEquipo() + "-" + equipo.getNombreEquipo());
 		}
@@ -180,7 +193,7 @@ public class VCrearApuestaEquipo extends JDialog implements ActionListener {
 
 	private void cargarEquipoLocal() {
 		// TODO Auto-generated method stub
-		List<Equipo> equipos = dao.listarEquiposPorDeporte(deportes, competiciones);
+		List<Equipo> equipos = dao.listarEquiposPorDeporteYCompeticion(deportes, competiciones);
 		for (Equipo equipo : equipos) {
 			cBLocal.addItem(equipo.getCodEquipo() + "-" + equipo.getNombreEquipo());
 		}
@@ -197,6 +210,7 @@ public class VCrearApuestaEquipo extends JDialog implements ActionListener {
 		}
 	}
 
+	//Metodo para enviar los datos al dao
 	private void confirmarPartido() {
 		// TODO Auto-generated method stub
 		DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -213,6 +227,7 @@ public class VCrearApuestaEquipo extends JDialog implements ActionListener {
 		int posV = cadenaVisitante.indexOf("-");
 		String codVisitante = cadenaVisitante.substring(0, posV);
 
+		//el equipo local y el visitante no pueden ser el mismo
 		if (!codLocal.equalsIgnoreCase(codVisitante)) {
 			if (error == "") {
 				partido = new Partido();
@@ -225,10 +240,11 @@ public class VCrearApuestaEquipo extends JDialog implements ActionListener {
 				apuesta = new Apuesta();
 				apuesta.setCuota(Float.parseFloat(cuota.getText()));
 
+				//Pedimos al dao que cree la apuesta, en caso de que no se consiga crear se avisara de ello mediante un JoptionPane
 				if (dao.crearApuesta(partido, jugar, apuesta)) {
 					JOptionPane.showMessageDialog(this, "LA APUESTA SE HA CREADO CORRECTAMENTE.");
 					this.dispose();
-					VDeporteCompeticionDeApuesta vent = new VDeporteCompeticionDeApuesta(vElegir, true, dao, null);
+					VDeporteCompeticionDeApuesta vent = new VDeporteCompeticionDeApuesta(vElegir, true, dao, cuenta);
 					vent.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(this, "LA APUESTA NO SE HA CREADO CORRECTAMENTE.");
@@ -241,11 +257,17 @@ public class VCrearApuestaEquipo extends JDialog implements ActionListener {
 		}
 	}
 
+	//Metodo para controlar los datos introducidos
+	/**
+	 * @param formateador
+	 * @return
+	 */
 	private String controlar(DateTimeFormatter formateador) {
 		// TODO Auto-generated method stub
 		String error = "";
 		LocalDate fecha;
 
+		// metodo con el que se controla q lo introducido es una fecha y es posterior a la fecha actual
 		if (!tFFecha.getText().equalsIgnoreCase("")) {
 			try {
 				fecha = LocalDate.parse(tFFecha.getText(), formateador);
@@ -266,6 +288,7 @@ public class VCrearApuestaEquipo extends JDialog implements ActionListener {
 			tFFecha.setBackground(new Color(255, 0, 0));
 		}
 
+		//metodo para controlar que la cuota es un numero y es mayor a 1  
 		if (!cuota.getText().equalsIgnoreCase("")) {
 			try {
 				float num = Float.parseFloat(cuota.getText());
@@ -288,6 +311,7 @@ public class VCrearApuestaEquipo extends JDialog implements ActionListener {
 		return error;
 	}
 
+	//metodo para volver a la anterior ventana
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.dispose();

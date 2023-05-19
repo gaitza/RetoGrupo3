@@ -35,6 +35,10 @@ import javax.swing.JSeparator;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * @author Grupo3
+ *
+ */
 public class VGestionarApuestas extends JDialog implements ActionListener {
 	private Dao dao;
 	private VElegir vElegir;
@@ -42,6 +46,12 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 	private JTable tabla;
 	private Cuenta cuenta;
 
+	/**
+	 * @param vElegir
+	 * @param b
+	 * @param dao
+	 * @param cuenta
+	 */
 	public VGestionarApuestas(VElegir vElegir, boolean b, Dao dao, Cuenta cuenta) {
 		super(vElegir);
 		getContentPane().setBackground(new Color(173, 255, 47));
@@ -86,7 +96,10 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 		btnVolver.addActionListener(this);
 		panel_1.add(btnVolver);
 
+		// Guardamos todas las apuestas
 		List<ListadoApuestas> apuestas = dao.listarApuestas();
+
+		// Creamos la tabla con las apuestas guardadas recientemente
 		presentarTabla(apuestas);
 	}
 
@@ -98,6 +111,7 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 		}
 	}
 
+	// Metodo para volver a la anterior ventana
 	private void volver() {
 		// TODO Auto-generated method stub
 		this.setFocusableWindowState(false);
@@ -106,6 +120,9 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 		vent.setVisible(true);
 	}
 
+	/**
+	 * @param apuestas
+	 */
 	public void presentarTabla(List<ListadoApuestas> apuestas) {
 		JScrollPane scroll = new JScrollPane();
 		scroll.setBorder(null);
@@ -113,10 +130,15 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 		scroll.setEnabled(false);
 		scroll.setBorder(BorderFactory.createEmptyBorder());
 		tabla = this.cargarTabla(apuestas);
+
+		/*
+		 * mediante un evento le pedimos que al clicar en una fila nos envie a otra
+		 * ventana para gestionar la apuesta
+		 */
 		tabla.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int fila=tabla.getSelectedRow();
+				int fila = tabla.getSelectedRow();
 				VPonerResultado vent = new VPonerResultado(vElegir, true, dao, apuestas.get(fila), cuenta);
 				vent.setVisible(true);
 			}
@@ -130,7 +152,7 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 		scroll.setViewportView(tabla);
 		getContentPane().add(scroll);
 		scroll.setBounds(10, 132, 459, 355);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("APUESTAS GENERADAS");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 16));
@@ -138,8 +160,12 @@ public class VGestionarApuestas extends JDialog implements ActionListener {
 		getContentPane().add(lblNewLabel_1);
 	}
 
+	/**
+	 * @param apuestas
+	 * @return
+	 */
 	public JTable cargarTabla(List<ListadoApuestas> apuestas) {
-		String[] cabeceras = {"EQUIPO L.", "EQUIPO V.", "FECHA P.","FECHA A.", "CUOTA"};
+		String[] cabeceras = { "EQUIPO L.", "EQUIPO V.", "FECHA P.", "FECHA A.", "CUOTA" };
 		String[] fila = new String[10];
 
 		DefaultTableModel model = new DefaultTableModel(null, cabeceras);
